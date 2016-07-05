@@ -28,6 +28,16 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                exclude: helpers.root('src', 'app'),
+                loader: ExtractTextPlugin.extract('style', 'css?sourceMap', 'sass')
+            },
+            {
+                test: /\.scss$/,
+                include: helpers.root('src', 'app'),
+                loader: 'raw'
+            },
+            {
+                test: /\.scss$/,
                 loader: 'raw-loader!sass-loader'
             }
         ]
