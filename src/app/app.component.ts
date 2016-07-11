@@ -2,14 +2,15 @@ import './rxjs-operators';
 
 import { Component } from '@angular/core';
 import { BoundaryService } from './boundary.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
-  selector: 'my-app',
-  template: require('./app.component.jade'),
-  styles: [require('./app.component.scss')],
-  providers: [BoundaryService]
+  	selector: 'my-app',
+  	template: require('./app.component.jade'),
+  	styles: [require('./app.component.scss')],
+  	providers: [BoundaryService],
+	directives: [LoginComponent]
 })
-
 export class AppComponent { 
 
 	visibleText: string = "ping";
