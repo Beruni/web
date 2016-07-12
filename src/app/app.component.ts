@@ -1,7 +1,6 @@
 import './rxjs-operators';
 
 import { Component } from '@angular/core';
-import '../../public/css/styles.scss';
 import { BoundaryService } from './boundary.service';
 
 @Component({

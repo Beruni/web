@@ -7,4 +7,7 @@ import '@angular/http';
 import '@angular/router';
 
 // RxJS
-import 'rxjs'
+import 'rxjs';
+
+// Semantic UI
+import '../node_modules/semantic-ui-css/semantic.css';

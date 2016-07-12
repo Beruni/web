@@ -1,5 +1,25 @@
-main
-    img(src='../../public/images/angular.png')
-    h1 {{visibleText}}
-    button((click) = 'ping()')
-    | Click
+div.pusher
+    div.ui.inverted.vertical.masthead.center.aligned.segment
+        div.ui.container
+            div.ui.large.secondary.inverted.pointing.menu
+                a.toc.item
+                    i.sidebar.icon
+                a.active.item Home
+                a.item About
+                div.right.item
+                    a.ui.inverted.button Log in
+        div.ui.text.container
+            h1.ui.inverted.header Beruni
+            h2 Easily map your data into creative visualizations
+            div.ui.huge.primary.button((click) = 'ping()') Get Started 
+                i.right.arrow.icon
+
+div.ui.inverted.vertical.footer.segment
+    div.ui.container
+        div.ui.stackable.inverted.divided.equal.height.stackable.grid
+            div.three.wide.column
+                h4.ui.inverted.header Contact Us
+            div.three.wide.column
+                h4.ui.inverted.header Copyright &copy; 2016
+            div.seven.wide.column
+                h4.ui.inverted.header Have feedback? Please drop a mail to beruni@thoughtworks.com.
