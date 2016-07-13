@@ -25,6 +25,16 @@ var LoginComponent = (function () {
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }('script', 'facebook-jssdk'));
+        window.fbAsyncInit = this.fbAsyncInit;
+    };
+    LoginComponent.prototype.fbAsyncInit = function () {
+        FB.init({
+            appId: '1019338061477962',
+            cookie: true,
+            // the session
+            xfbml: true,
+            version: 'v2.5' // use graph api version 2.5
+        });
     };
     LoginComponent.prototype.loginWithFacebook = function () {
         this.facebookLoginService.login();

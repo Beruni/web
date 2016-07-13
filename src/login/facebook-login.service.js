@@ -12,40 +12,28 @@ var core_1 = require('@angular/core');
 var FacebookLoginService = (function () {
     function FacebookLoginService() {
     }
+    FacebookLoginService.prototype.statusChangeCallback = function (response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        if (response.status === 'connected')
+            this.testAPI();
+        else if (response.status === 'not_authorized')
+            document.getElementById('status').innerHTML = 'Please log into this app.';
+        else
+            document.getElementById('status').innerHTML = 'Please log into Facebook';
+    };
+    FacebookLoginService.prototype.testAPI = function () {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', { fields: 'name, email' }, function (response) {
+            console.log('Successful login for: ' + response.email);
+            console.log('Thanks for logging in, ' + response.name + '!');
+        });
+    };
     FacebookLoginService.prototype.login = function () {
-        console.log("testing facebook login");
-        // statusChangeCallback(response) {
-        //     console.log('statusChangeCallback');
-        //     console.log(response);
-        //
-        //     if (response.status === 'connected')
-        //         testAPI();
-        //
-        //     else if (response.status === 'not_authorized')
-        //         document.getElementById('status').innerHTML = 'Please log ' +
-        //         'into this app.';
-        //     else
-        //         document.getElementById('status').innerHTML = 'Please log ' +
-        //         'into Facebook.';
-        // }
-        // checkLoginState() {
-        //     FB.getLoginStatus(function(response) {
-        //     statusChangeCallback(response);
-        //     });
-        // }
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1764713313741831',
-                cookie: true,
-                // the session
-                xfbml: true,
-                version: 'v2.5' // use graph api version 2.5
-            });
-            // FB.getLoginStatus(function(response) {
-            //     statusChangeCallback(response);
-            // });
-        };
-        console.log(FB);
+        var loginService = this;
+        FB.getLoginStatus(function (response) {
+            loginService.statusChangeCallback(response);
+        });
     };
     FacebookLoginService = __decorate([
         core_1.Injectable(), 

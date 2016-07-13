@@ -20,6 +20,18 @@ export class LoginComponent implements OnInit{
             js.src = "//connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }('script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = this.fbAsyncInit;
+
+    }
+    fbAsyncInit() {
+        FB.init({
+            appId: '1019338061477962',
+            cookie: true,  // enable cookies to allow the server to access
+            // the session
+            xfbml: true,  // parse social plugins on this page
+            version: 'v2.5' // use graph api version 2.5
+        });
     }
 
     loginWithFacebook() {
