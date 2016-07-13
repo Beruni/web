@@ -3,12 +3,12 @@ import { FacebookLoginService } from './facebook-login.service';
 
 
 @Component({
-    selector: 'login',
-    template: require('./login.component.jade'),
+    selector: 'fblogin',
+    template: require('./fblogin.component.jade'),
     providers: [FacebookLoginService]
 })
 
-export class LoginComponent implements OnInit{
+export class FbLoginComponent implements OnInit{
     constructor(private facebookLoginService: FacebookLoginService) {}
 
     ngOnInit(){
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit{
         window.fbAsyncInit = this.fbAsyncInit;
 
     }
+
     fbAsyncInit() {
         FB.init({
             appId: '1019338061477962',
@@ -35,6 +36,8 @@ export class LoginComponent implements OnInit{
     }
 
     loginWithFacebook() {
-        this.facebookLoginService.login();
+        console.log('fb login button clicked');
+
+        //this.facebookLoginService.login();
     }
 }

@@ -2,14 +2,14 @@ import './rxjs-operators';
 
 import { Component } from '@angular/core';
 import { BoundaryService } from './boundary.service';
-import { LoginComponent } from '../login/login.component';
+import { FbLoginComponent } from '../login/fblogin.component';
 
 @Component({
   	selector: 'my-app',
   	template: require('./app.component.jade'),
   	styles: [require('./app.component.scss')],
   	providers: [BoundaryService],
-	directives: [LoginComponent]
+	directives: [FbLoginComponent]
 })
 export class AppComponent { 
 
