@@ -4,21 +4,22 @@ import { Injectable }     from '@angular/core';
 export class FacebookLoginService{
 
     statusChangeCallback(response: any){
-        console.log('statusChangeCallback');
+        console.log(JSON.stringify('statusChangeCallback'));
         console.log(response);
 
-        if (response.status === 'connected')
+        if (response.status === 'connected') {
+            console.log('now connected '+JSON.stringify(response));
             this.testAPI();
-        else if (response.status === 'not_authorized')
-            document.getElementById('status').innerHTML = 'Please log into this app.';
+        }else if (response.status === 'not_authorized')
+            console.log('Please log into this app.');
         else
-            document.getElementById('status').innerHTML = 'Please log into Facebook';
+            console.log('Please log into Facebook');
     }
 
     testAPI() {
         console.log('Welcome!  Fetching your information.... ');
 
-        FB.api('/me', {fields : 'name, email'},function(response: any) {
+        FB.api('/me?', {fields : 'name, email'},function(response: any) {
             console.log('Successful login for: ' + response.email);
             console.log('Thanks for logging in, ' + response.name + '!');
         });
@@ -26,9 +27,10 @@ export class FacebookLoginService{
 
     login() {
         var loginService = this;
-        FB.getLoginStatus(function(response: any) {
-            loginService.statusChangeCallback(response)
-        });
+        FB.login(function(response) {
+            loginService.statusChangeCallback(response);
+        }, {scope: 'public_profile, email'});
+
 
     }
 

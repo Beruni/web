@@ -27,7 +27,7 @@ export class FbLoginComponent implements OnInit{
 
     fbAsyncInit() {
         FB.init({
-            appId: '1019338061477962',
+            appId: '1764713313741831',
             cookie: true,  // enable cookies to allow the server to access
             // the session
             xfbml: true,  // parse social plugins on this page
@@ -38,6 +38,6 @@ export class FbLoginComponent implements OnInit{
     loginWithFacebook() {
         console.log('fb login button clicked');
 
-        //this.facebookLoginService.login();
+        this.facebookLoginService.login();
     }
 }
