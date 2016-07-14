@@ -9,3 +9,5 @@ src/*.js.map
 .idea/
 src/*/*.js
 src/*/*.map
+test/*/*.js
+test/*/*.map
