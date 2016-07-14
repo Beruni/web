@@ -4,8 +4,10 @@ typings/
 dist/
 **/.DS_Store
 .idea/
+src/*/*/*/*.js
 src/*/*/*.js
 src/*/*/*.js.map
+src/*/*/*/*.js.map
 .idea/
 src/*/*.js
 src/*.js
