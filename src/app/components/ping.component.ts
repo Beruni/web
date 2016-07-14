@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core'
-import { BoundaryService } from './boundary.service';
+import { BoundaryService } from '../services/boundary.service';
 
 @Component({
   selector: 'ping',

@@ -1,8 +1,8 @@
 import './rxjs-operators';
 
 import { Component } from '@angular/core';
-import { BoundaryService } from './boundary.service';
-import { FbLoginComponent } from '../login/fblogin.component';
+import { BoundaryService } from './services/boundary.service';
+import { FbLoginComponent } from './login/fblogin.component';
 
 @Component({
   	selector: 'my-app',

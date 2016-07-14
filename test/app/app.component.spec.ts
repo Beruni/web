@@ -6,7 +6,7 @@ import {
   expect
 } from '@angular/core/testing';
 import { AppComponent } from '../../src/app/app.component';
-import { BoundaryService } from '../../src/app/boundary.service';
+import { BoundaryService } from '../../src/app/services/boundary.service';
 import { provide } from '@angular/core';
 import {Observable} from "rxjs/Rx";
 import {HTTP_PROVIDERS} from "@angular/http";
