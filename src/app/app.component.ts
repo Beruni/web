@@ -2,19 +2,21 @@ import './rxjs-operators';
 
 import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { BoundaryService } from './services/boundary.service';
 import { FbLoginComponent } from './login/fblogin.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
+
+import { BoundaryService } from './services/boundary.service';
+
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
   	selector: 'my-app',
   	template: `<my-header></my-header>
-	<home></home>
+	<router-outlet></router-outlet>
 	<my-footer></my-footer>`,
   	styles: [require('./app.component.scss')],
   	providers: [BoundaryService],
-	directives: [FbLoginComponent, HeaderComponent, FooterComponent, HomeComponent]
+	directives: [FbLoginComponent, HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
 })
 export class AppComponent {
 	visibleText: string = "ping";
