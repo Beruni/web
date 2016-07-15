@@ -2,7 +2,6 @@ import './rxjs-operators';
 
 import { Component } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { FbLoginComponent } from './login/fblogin.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { ROUTER_DIRECTIVES } from '@angular/router';
@@ -13,7 +12,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 	<router-outlet></router-outlet>
 	<my-footer></my-footer>`,
   	styles: [require('./app.component.scss')],
-	directives: [FbLoginComponent, HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
+	directives: [HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
 })
 export class AppComponent {
 	
