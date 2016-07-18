@@ -7,4 +7,4 @@ if (process.env.ENV === 'production') {
   enableProdMode();
 }
 
-bootstrap(AppComponent, [ appRouterProviders ]);
+bootstrap(AppComponent,[ appRouterProviders ]);

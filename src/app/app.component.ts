@@ -15,6 +15,6 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 	directives: [HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
 })
 export class AppComponent {
-	
+
 }
 		
