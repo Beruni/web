@@ -19,11 +19,11 @@ export class FacebookLoginService {
 
     fbAsyncInit() {
         FB.init({
-            appId: '1764713313741831',
+            appId: '486249311585045',
             cookie: true,  // enable cookies to allow the server to access
             // the session
             xfbml: true,  // parse social plugins on this page
-            version: 'v2.5' // use graph api version 2.5
+            version: 'v2.7' // use graph api version 2.5
         });
     }
 

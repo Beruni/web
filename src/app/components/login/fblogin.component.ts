@@ -23,10 +23,13 @@ export class FbLoginComponent {
         {
             if (response.status === 'connected') {
 
-                let data = {userId:response.authResponse.userID,
-                    accessToken:response.authResponse.accessToken,source:'FB'}
+                let data = {
+                    userId:response.authResponse.userID, 
+                    accessToken:response.authResponse.accessToken,source:'FB'
+                }
 
-                console.log('loginWithFacebook ' + JSON.stringify(data));
+
+                // console.log('loginWithFacebook ' + JSON.stringify(data));
                 loginComponent.sendLoginResquestWithToken(data);
 
             }

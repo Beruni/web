@@ -13,9 +13,8 @@ export class UserService {
     login(data:any, callback:any): Promise<any>
     {
         console.log('avout to send to backend');
-        let headers = new Headers({
-        'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/ping',JSON.stringify(data),{headers:headers})
+        let headers = new Headers({'Content-Type': 'application/json'});
+        return this.http.post('http://localhost:3001/login',JSON.stringify(data),{headers:headers})
             .toPromise()
             .then(callback)
             .catch(this.handleError);
