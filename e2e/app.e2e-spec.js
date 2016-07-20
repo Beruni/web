@@ -1,18 +1,18 @@
-describe('App', () => {
+describe('App', function(){
 
-  beforeEach(() => {
+  beforeEach(function(){
     browser.get('/');
   });
 
-  it('should have a title', () => {
-    let subject = browser.getTitle();
-    let result = 'Beruni';
+  it('should have a title', function(){
+    subject = browser.getTitle();
+    result = 'Beruni';
     expect(subject).toEqual(result);
   });
 
-  it('should have header', () => {
-    let subject = element(by.css('h1')).isPresent();
-    let result = true;
+  it('should have header', function(){
+    subject = element(by.css('h1')).isPresent();
+    result = true;
     expect(subject).toEqual(result);
   });
 

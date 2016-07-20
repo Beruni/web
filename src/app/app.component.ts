@@ -12,6 +12,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   	styles: [require('./app.component.scss')],
 	directives: [HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
 })
+
 export class AppComponent {
 
 }
