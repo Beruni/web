@@ -35,12 +35,13 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                include: helpers.root('src', 'app'),
-                loader: 'raw'
+                include: helpers.root('src', 'app', 'footer'),
+                loader: 'raw!sass-loader'
             },
             {
                 test: /\.scss$/,
-                loader: 'raw-loader!sass-loader'
+                exclude: /node_modules/,
+                loader: 'raw!sass-loader'
             }
         ]
     },
