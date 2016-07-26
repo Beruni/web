@@ -1,22 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 
 @Component({
-   selector: '[tags]',
-   template: `
+    selector: '[tags]',
+    template: `
     <ul (click)="focus()">
       <li class="tag" *ngFor="let item of tags">{{item}}</li>
       <li class="tag nopadding">
         <input id="tagInput"
                [(ngModel)]="current"
-               (keyup)="keyUp($event)"
+               (keyup)="createTagFromKeyEvent($event)"
                (blur)="blur()" />
       </li>
     </ul>
    `,
-   styles:[`
+    styles: [`
       ul {
         display: block;
-        width: 100%;
+        width: 60%;
+        margin-left: 10px;
         height: 34px;
         padding: 6px 12px;
         font-size: 14px;
@@ -53,38 +54,38 @@ import {Component} from '@angular/core';
     `]
 })
 
+@Injectable()
 export class Tags {
 
-  tags:Array<string>;
-  current:string;
+    tags:Array<string>;
+    current:string;
 
-  constructor() {
-    if (!this.tags) {
-      this.tags = [];
+    constructor() {
+        if (!this.tags) {
+            this.tags = [];
+        }
     }
-  }
 
-  focus() {
-    document.getElementById('tagInput').focus();
-  }
-
-  keyUp(event:KeyboardEvent) {
-    if (event.keyCode === 13) {
-      this.tags.push(this.current.substr(0, this.current.length));
-      console.log(this.tags);
-      this.current = '';
-    } else if (event.keyCode === 8 && this.current.length == 0){
-      this.current = this.tags.pop();
+    focus() {
+        document.getElementById('tagInput').focus();
     }
-  }
 
-  blur() {
-    if (this.current !== '') {
-      this.tags.push(this.current);
-      this.current = '';
+    createTagFromKeyEvent(event:any) {
+        if (event.keyCode === 13 && this.current != null && this.current.length > 0) {
+            this.tags.push(this.current.substr(0, this.current.length));
+            this.current = '';
+        }
+        if (event.keyCode === 8 && this.current != null && this.current.length == 0) {
+            this.current = this.tags.pop();
+        }
     }
-  }
 
+    blur() {
+        if (this.current !== '') {
+            this.tags.push(this.current);
+            this.current = '';
+        }
+    }
 
 
 }
