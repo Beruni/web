@@ -47,7 +47,7 @@ export class FbLoginComponent {
     }
 
     private handleLogin = function (res:any) {
-        console.log('handleLogin ' + JSON.stringify(res));
+        localStorage.setItem('user_token',JSON.stringify(res));
     }
 
 
