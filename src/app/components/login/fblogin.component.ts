@@ -14,8 +14,6 @@ export class FbLoginComponent {
 
     }
 
-
-
     loginWithFacebook() {
         var loginComponent = this;
         console.log('fb login button clicked ');
@@ -28,8 +26,6 @@ export class FbLoginComponent {
                     accessToken:response.authResponse.accessToken,source:'FB'
                 }
 
-
-                // console.log('loginWithFacebook ' + JSON.stringify(data));
                 loginComponent.sendLoginResquestWithToken(data);
 
             }
@@ -48,6 +44,4 @@ export class FbLoginComponent {
       localStorage.setItem('user_token',JSON.stringify(res));
     }
    
-
-
 }
