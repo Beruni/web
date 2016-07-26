@@ -41,15 +41,13 @@ export class FbLoginComponent {
     }
 
     private sendLoginResquestWithToken = function(data:any){
-        console.log('sendLoginResquestWithToken ' + JSON.stringify(data));
-        console.log('sendLoginResquestWithToken == '+ this.userService);
         this.userService.login(data,this.handleLogin);
     }
 
     private handleLogin = function (res:any) {
-        localStorage.setItem('user_token',JSON.stringify(res));
+      localStorage.setItem('user_token',JSON.stringify(res));
     }
-
+   
 
 
 }
