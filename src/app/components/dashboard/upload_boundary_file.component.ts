@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 
-
 @Component({
-    selector: 'upload_boundary_file',
+    selector: 'upload-boundary-file',
     template: require('./upload_boundary_file.component.jade'),
     styles: [`
         button{
