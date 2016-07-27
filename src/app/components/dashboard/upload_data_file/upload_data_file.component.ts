@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {TagsInputComponent} from "../tags/tags.component";
+import {DataFile} from './dataFile.ts'
 
 @Component({
     selector: 'upload-data-file',
@@ -8,11 +9,8 @@ import {TagsInputComponent} from "../tags/tags.component";
 })
 
 export class DataFileComponent {
-    public dataFile : {
-        tags:any[]
-    } = { tags:[]};
-
+    public dataFile:DataFile = new DataFile();
     uploadSelectedFile() {
-        console.log('test');
+        console.log(this.dataFile + " " + this.dataFile.tags);
     }
 }
