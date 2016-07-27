@@ -1,9 +1,9 @@
 hr
 br
 tags-input([(ngModel)]="dataFile.tags")
-input(type="text",name="title",placeholder="Title of data file")
+input(placeholder="Title of data file", [(ngModel)]="dataFile.name")
 
-input(type="file",name="upl")
+input(type="file", [(ngModel)]="dataFile.content", accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" )
 button#upload_button((click)="uploadSelectedFile()")
     | Upload data file
 
