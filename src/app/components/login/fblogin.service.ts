@@ -1,10 +1,11 @@
-import {Injectable}     from '@angular/core';
+import { Injectable }  from '@angular/core';
+
 
 @Injectable()
 export class FacebookLoginService {
     constructor() {
-        (function (s:string, id:string) {
-            let js:any;
+        (function (s: string, id: string) {
+            let js: any;
             var fjs = document.getElementsByTagName(s)[0];
             if (document.getElementById(id)) return;
             js = document.createElement(s);
@@ -27,13 +28,10 @@ export class FacebookLoginService {
         });
     }
 
-    login(callback:any) {
-        var loginService = this;
-        FB.login(function (response:any) {
-            callback(response);
-        }, {scope: 'public_profile, email'});
-
+    login(): Promise<any> {
+        return new Promise((resolve, reject) => FB.login(
+                (response: any) => resolve(response), 
+                {scope: 'public_profile, email'}
+        ));
     }
-
-
 }
