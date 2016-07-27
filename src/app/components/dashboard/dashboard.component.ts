@@ -5,10 +5,7 @@ import {DataFileComponent} from "./upload_data_file/upload_data_file.component";
 @Component({
     selector: 'dashboard',
     directives: [BoundaryFileComponent, DataFileComponent],
-    template: `
-    <upload-boundary-file></upload-boundary-file>
-    <upload-data-file></upload-data-file>
-`
+    template: require('./dashboard.component.jade')
 })
 
 export class DashboardComponent {

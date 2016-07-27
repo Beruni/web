@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {TagsInputComponent} from "../tags/tags.component";
 
 @Component({
     selector: 'upload-boundary-file',
@@ -11,14 +12,15 @@ import {Component} from '@angular/core';
             margin-left: 10px;
             margin-bottom: 10px;
         }
-    `]
+    `],
+    directives: [TagsInputComponent]
 })
 
 
 export class BoundaryFileComponent {
-    public boundaryFile : {
+    public boundaryFile:{
         tags:any[]
-    } = { tags:[]};
+    } = {tags: []};
 
     uploadSelectedFile() {
         console.log("Upload clicked");
