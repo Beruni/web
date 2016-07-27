@@ -1,21 +1,15 @@
 import {Component} from '@angular/core';
-import {TagsInputComponent} from "./tags.component";
-import {BoundaryFileComponent} from "./upload_boundary_file.component";
+import {BoundaryFileComponent} from "./upload_boundary_file/upload_boundary_file.component";
+import {DataFileComponent} from "./upload_data_file/upload_data_file.component";
 
 @Component({
     selector: 'dashboard',
-    directives: [TagsInputComponent, BoundaryFileComponent],
-    template: `<tags-input
-    placeholder="Add an tag"
-    [(ngModel)]="boundaryFile.tags"
-    delimiterCode="188">
-    </tags-input>
-    <upload-boundary-file>
-    </upload-boundary-file> `
+    directives: [BoundaryFileComponent, DataFileComponent],
+    template: `
+    <upload-boundary-file></upload-boundary-file>
+    <upload-data-file></upload-data-file>
+`
 })
 
 export class DashboardComponent {
-    public boundaryFile : {
-        tags:any[]
-    } = { tags:[]};
 }

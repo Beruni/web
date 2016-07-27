@@ -16,6 +16,10 @@ import {Component} from '@angular/core';
 
 
 export class BoundaryFileComponent {
+    public boundaryFile : {
+        tags:any[]
+    } = { tags:[]};
+
     uploadSelectedFile() {
         console.log("Upload clicked");
         (<HTMLFormElement>document.getElementById("file_selector")).submit();

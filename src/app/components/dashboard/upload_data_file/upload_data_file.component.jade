@@ -1,0 +1,11 @@
+hr
+br
+tags-input([(ngModel)]="dataFile.tags")
+input(type="text",name="title",placeholder="Title of data file")
+
+input(type="file",name="upl")
+button#upload_button((click)="uploadSelectedFile()")
+    | Upload data file
+
+
+
