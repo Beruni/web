@@ -11,4 +11,5 @@ div.pusher
                     button.ui.twitter.button
                         i.twitter.icon
                         | Login with Twitter
-                    fblogin
+                    fblogin(*ngIf='checkTokenValidation()==true')
+                    fblogout(*ngIf='checkTokenValidation()==false')
