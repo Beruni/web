@@ -12,7 +12,10 @@ export class DataFileComponent {
     public dataFile:DataFile = new DataFile();
     uploadSelectedFile() {
         console.log(this.dataFile);
-        console.log(this.dataFile.name);
-        console.log(this.dataFile.content);
+        console.log(this.dataFile.file);
+    }
+
+    selectedFile(event:any){
+        this.dataFile.file = event.target.files[0];
     }
 }
