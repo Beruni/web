@@ -10,8 +10,11 @@ export class DataFileService {
 
     upload(dataFile:DataFile):Promise<any> {
         console.log("Uploading file from service");
-        let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post(this.baseURL + "/upload", JSON.stringify(dataFile.file.content), {headers:headers})
+        var formData = new FormData();
+        formData.append("data_file", dataFile.file, dataFile.file.name);
+        formData.append("tags", dataFile.tags);
+        let headers = new Headers();
+        return this.http.post(this.baseURL + "/upload", formData, {headers:headers})
             .toPromise();
     }
 }
