@@ -11,7 +11,7 @@ export class UserService {
     login(data:any): Promise<any> {
         console.log('avout to send to backend');
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3001/authorize', JSON.stringify(data), {headers:headers})
+        return this.http.post('http://127.0.0.1:3001/authorize', JSON.stringify(data), {headers:headers})
             .toPromise();
     }
 }
