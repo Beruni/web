@@ -10,4 +10,6 @@ import '@angular/router';
 import 'rxjs';
 
 // Semantic UI
-import '../node_modules/semantic-ui-css/semantic.css';
+import 'semantic-ui-css/semantic.css';
+import 'jquery';
+import 'semantic-ui-css/semantic.min.js';
