@@ -48,6 +48,11 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'src/index.jade'
+        }),
+
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
         })
     ]
 };
