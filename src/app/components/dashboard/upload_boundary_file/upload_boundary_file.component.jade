@@ -1,6 +1,8 @@
 tags-input([(ngModel)]="boundaryFile.tags")
 
-form(method="post",enctype="multipart/form-data",action="http://127.0.0.1:3000/")#file_selector
+form(method="post",enctype="multipart/form-data",action="http://127.0.0.1:3000/upload/")#file_selector
+    p
+        input(type="hidden",name="tags")#tags_field
     p
         input(type="text",name="title",placeholder="Title of boundary file")
     p

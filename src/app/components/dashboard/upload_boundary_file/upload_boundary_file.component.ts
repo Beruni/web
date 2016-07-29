@@ -23,7 +23,8 @@ export class BoundaryFileComponent {
     } = {tags: []};
 
     uploadSelectedFile() {
-        console.log("Upload clicked");
+
+        (<HTMLInputElement>document.getElementById("tags_field")).value = this.boundaryFile.tags.toString();
         (<HTMLFormElement>document.getElementById("file_selector")).submit();
     }
 
