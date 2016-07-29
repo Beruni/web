@@ -7,7 +7,7 @@ module.exports = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts',
+        'app': './src/main.ts'
     },
 
     resolve: {
@@ -35,13 +35,8 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                include: helpers.root('src', 'app', 'footer'),
-                loader: 'raw!sass-loader'
-            },
-            {
-                test: /\.scss$/,
-                exclude: /node_modules/,
-                loader: 'raw!sass-loader'
+                include: helpers.root('src', 'app'),
+                loader: 'raw!sass'
             }
         ]
     },
@@ -55,4 +50,4 @@ module.exports = {
             template: 'src/index.jade'
         })
     ]
-}
+};
