@@ -13,3 +13,5 @@ import 'rxjs';
 import 'semantic-ui-css/semantic.css';
 import 'jquery';
 import 'semantic-ui-css/semantic.min.js';
+
+import 'ng-semantic';
