@@ -9,12 +9,14 @@ export class DataFileService {
     constructor(private http: Http) { }
 
     upload(dataFile:DataFile):Promise<any> {
-        console.log("Uploading file from service");
-        var formData = new FormData();
-        formData.append("data_file", dataFile.file, dataFile.file.name);
-        formData.append("tags", dataFile.tags);
-        let headers = new Headers();
-        return this.http.post(this.baseURL + "/upload", formData, {headers:headers})
-            .toPromise();
+            console.log("Uploading file from service");
+            var formData = new FormData();
+            formData.append("data_file", dataFile.file, "some_file");
+            formData.append("file_title", dataFile.title);
+            formData.append("tags", dataFile.tags);
+            let headers = new Headers();
+            return this.http.post(this.baseURL + "/upload", formData, {headers: headers})
+                .toPromise();
+        }
     }
 }

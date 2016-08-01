@@ -1,4 +1,9 @@
 export class DataFile {
-    public tags: string[] = [];
-    public file:File;
+    constructor(public title:String,
+                public file:File,
+                public tags:[String] = []) {
+        this.title = title;
+        this.file = file;
+        this.tags = tags;
+    }
 }

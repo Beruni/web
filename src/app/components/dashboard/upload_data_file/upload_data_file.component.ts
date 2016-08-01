@@ -11,17 +11,21 @@ import {DataFileService} from "../../shared/data_file.service";
 })
 
 export class DataFileComponent {
-    public dataFile:DataFile = new DataFile();
+    public tags:[String];
+    public name:String;
+    public file:File;
 
-    constructor(
-        private dataFileService:DataFileService){
+    constructor(private dataFileService:DataFileService) {
     }
 
     uploadSelectedFile() {
-        this.dataFileService.upload(this.dataFile);
+        if (this.file) {
+            var dataFile = new DataFile(this.name, this.file, this.tags);
+            this.dataFileService.upload(dataFile);
+        }
     }
 
-    selectedFile(event:any){
-        this.dataFile.file = event.target.files[0];
+    selectedFile(event:any) {
+        this.file = event.target.files[0];
     }
 }
