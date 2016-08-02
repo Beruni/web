@@ -1,12 +1,16 @@
 tags-input([(ngModel)]="boundaryFile.tags")
 
-form(method="post",enctype="multipart/form-data",action="http://127.0.0.1:3000/upload/")#file_selector
+div
     p
-        input(type="hidden",name="tags")#tags_field
+        input(type="hidden",name="tags")
     p
-        input(type="text",name="title",placeholder="Title of boundary file")
+        input(type="text",name="title",placeholder="Title of boundary file",[(ngModel)]="boundaryFile.title")
     p
-        input(type="file",name="boundaryFile")
+        input(type="file",name="boundaryFile")#boundaryFile
 
-button#upload_button((click)="uploadSelectedFile()")
-    | Upload
+div
+    button#upload_button((click)="uploadSelectedFile()")
+        | Upload
+
+    div(style='background:#F9FAFB;padding:1%;width:50%;margin-top:2%;display:none')#progressbarContainer
+        div(style='background:white;padding:1%;width:0%')#progressbar
