@@ -1,15 +1,27 @@
 import {Component} from '@angular/core';
-import { SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES } from "ng-semantic";
 
-import {BoundaryFileComponent} from "./upload_boundary_file/upload-boundary-file.component";
-import {UploadModalComponent} from "./upload_modal/upload-modal.component";
+import {ViewBoundaryFileComponent} from "./upload_boundary_file/view_uploaded_boundary_file.component";
+import {ViewDataFileComponent} from "./upload_data_file/view_uploaded_data_file.component";
 
 @Component({
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [BoundaryFileComponent, UploadModalComponent, SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES]
+    directives: [ViewBoundaryFileComponent, ViewDataFileComponent]
 })
 
 export class DashboardComponent {
+    tabNumber: number = 0; 
+    onSelectBoundaryFile() {
+         this.tabNumber = 0
+    }
+    onSelectDataFile(){
+        this.tabNumber = 1
+    }
+    onVisualization(){
+        this.tabNumber = 2
+    }
+    checkCurrentTab(){
+        return this.tabNumber;
+    }
 }

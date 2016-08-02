@@ -1,53 +1,16 @@
 .ui.container
     .ui.secondary.pointing.menu
-        a.item.active
+        a.item((click)='onSelectBoundaryFile()')
             | Boundary files
-        a.item
+        a.item((click)='onSelectDataFile()')
             | Data files
-        a.item
+        a.item((click)='onVisualization()')
             | Visualization
+    div([ngSwitch]="checkCurrentTab()")
+        template([ngSwitchCase]='0')
+            view-upload-boundary-file
+        template([ngSwitchCase]='1')
+            view-uploaded-data-file
+        template([ngSwitchCase]='2')
+            | this is visualization page
 
-    .ui.category.search
-        .ui.icon.input
-            input.prompt(type='text', placeholder='Search for boundary file...')
-            i.search.icon
-        .results
-
-    table.ui.celled.table
-        thead
-            tr
-                th My file name
-                th Uploaded date
-                th Tags
-        tbody
-            tr
-                td District of India
-                td March 13, 2016
-                td India, District
-            tr
-                td Boundaries of Odisha
-                td April 15, 2016
-                td India, Odisha
-            tr
-                td States of India
-                td April 16, 2016
-                td India, States
-        tfoot
-            tr
-                th(colspan='3')
-                    .ui.right.floated.pagination.menu
-                        a.icon.item
-                            i.left.chevron.icon
-                        a.item 1
-                        a.item 2
-                        a.item 3
-                        a.item 4
-                        a.icon.item
-                            i.right.chevron.icon
-    button.ui.secondary.button((click)='upload.showModal()') Upload
-    upload-modal(#upload='')
-
-    p
-        upload-boundary-file
-    p
-        upload-data-file
