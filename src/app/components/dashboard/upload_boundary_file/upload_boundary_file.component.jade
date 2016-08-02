@@ -2,14 +2,14 @@ tags-input([(ngModel)]="boundaryFile.tags")
 
 div
     p
-        input(type="hidden",name="tags")
+        input(type="hidden",name="tags", required='true')
     p
-        input(type="text",name="title",placeholder="Title of boundary file",[(ngModel)]="boundaryFile.title")
+        input(type="text",name="title",placeholder="Title of boundary file",[(ngModel)]="boundaryFile.title", required='true')
     p
-        input(type="file",name="boundaryFile")#boundaryFile
+        input(type="file",name="boundaryFile", (change)="enableUploadButton()")#boundaryFile
 
 div
-    button#upload_button((click)="uploadSelectedFile()")
+    button#upload_button((click)="uploadSelectedFile()", disabled='true')
         | Upload
 
     div(style='background:#F9FAFB;padding:1%;width:50%;margin-top:2%;display:none')#progressbarContainer
