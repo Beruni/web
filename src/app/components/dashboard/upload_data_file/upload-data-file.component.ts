@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {TagsInputComponent} from "../tags/tags.component";
-import {DataFile} from "./dataFile";
-import {DataFileService} from "../../shared/data_file.service";
+import {DataFile} from "./data-file";
+import {DataFileService} from "../../shared/data-file.service";
 
 @Component({
     selector: 'upload-data-file',
