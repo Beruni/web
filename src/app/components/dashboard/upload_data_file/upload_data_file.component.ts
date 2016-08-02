@@ -11,8 +11,8 @@ import {DataFileService} from "../../shared/data_file.service";
 })
 
 export class DataFileComponent {
-    public tags:[String];
-    public name:String;
+    public tags:String[] = [];
+    public name:String = '';
     public file:File;
 
     constructor(private dataFileService:DataFileService) {
