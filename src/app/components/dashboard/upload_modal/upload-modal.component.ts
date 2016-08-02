@@ -22,8 +22,7 @@ export class UploadModalComponent {
     constructor(private dataFileService:DataFileService) {
     }
 
-    testParentChild(){
-        console.log("Testing component embedding...");
+    showModal(){
         this.modal.show({inverted: true})
     }
 
