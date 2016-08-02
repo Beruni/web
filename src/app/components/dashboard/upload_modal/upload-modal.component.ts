@@ -1,21 +1,30 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
-import {DataFile} from "./data-file";
 import {DataFileService} from "../../shared/data-file.service";
+import {SemanticModalComponent} from "ng-semantic/ng-semantic";
+import {DataFile} from "../upload_data_file/data-file";
 
 @Component({
-    selector: 'upload-data-file',
-    template: require('./upload-data-file.component.jade'),
-    directives: [TagsInputComponent],
+    selector: 'upload-modal',
+    template: require('./upload-modal.component.jade'),
+    directives: [TagsInputComponent, SemanticModalComponent],
     providers: [DataFileService]
 })
 
-export class DataFileComponent {
+export class UploadModalComponent {
+
+    @ViewChild(SemanticModalComponent)
+    private modal:SemanticModalComponent;
     public tags:String[] = [];
     public name:String = '';
     public file:File;
 
     constructor(private dataFileService:DataFileService) {
+    }
+
+    testParentChild(){
+        console.log("Testing component embedding...");
+        this.modal.show({inverted: true})
     }
 
     uploadSelectedFile() {

@@ -1,0 +1,17 @@
+sm-modal(title='UPLOAD BOUNDARY FILE')
+    modal-content
+        | Select A File
+        input.upload-button(type="file", accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", (change)="selectedFile($event)")
+        br
+        | Supported formats: GeoJSON
+        br
+        input(placeholder="Title of data file", [(ngModel)]="name")
+        br
+        | Tags:
+        tags-input([(ngModel)]="tags")
+        br
+        | These helps others to find your files:
+    modal-actions
+        .ui.buttons
+            button.ui.secondary.button((click)='uploadSelectedFile()') Upload
+
