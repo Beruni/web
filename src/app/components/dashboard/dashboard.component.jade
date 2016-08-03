@@ -1,10 +1,10 @@
 .ui.container
     .ui.secondary.pointing.menu
-        a.item((click)='onSelectBoundaryFile()')
+        a.item.active((click)='onSelectBoundaryFile()')#boundary-file
             | Boundary files
-        a.item((click)='onSelectDataFile()')
+        a.item((click)='onSelectDataFile()')#data-file
             | Data files
-        a.item((click)='onVisualization()')
+        a.item((click)='onVisualization()')#visualization
             | Visualization
     div([ngSwitch]="checkCurrentTab()")
         template([ngSwitchCase]='0')

@@ -13,12 +13,23 @@ import {ViewDataFileComponent} from "./upload_data_file/view_uploaded_data_file.
 export class DashboardComponent {
     tabNumber: number = 0; 
     onSelectBoundaryFile() {
-         this.tabNumber = 0
+        this.removeActiveClassed()
+        $("#boundary-file").addClass("active");
+        this.tabNumber = 0
+    }
+    removeActiveClassed(){
+        $("#boundary-file").removeClass("active");
+        $("#data-file").removeClass("active");
+        $("#visualization").removeClass("active");
     }
     onSelectDataFile(){
+        this.removeActiveClassed()
+        $("#data-file").addClass("active");
         this.tabNumber = 1
     }
-    onVisualization(){
+    onVisualization(id:string){
+        this.removeActiveClassed()
+        $("#visualization").addClass("active");
         this.tabNumber = 2
     }
     checkCurrentTab(){
