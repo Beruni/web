@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {DataFile} from "../dashboard/upload_data_file/data-file";
+import {DataFile} from "../dashboard/data_file/data-file";
 
 @Injectable()
 export class DataFileService {

@@ -1,8 +1,8 @@
 import {Component, ViewChild} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
-import {DataFileService} from "../../shared/data-file.service";
+import {DataFileService} from "../../../shared/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
-import {DataFile} from "../upload_data_file/data-file";
+import {DataFile} from "../../data_file/data-file";
 
 @Component({
     selector: 'upload-modal',

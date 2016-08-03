@@ -1,5 +1,5 @@
 import {Component, Injectable} from "@angular/core";
-import {TagsInputComponent} from "../tags/tags.component";
+import {TagsInputComponent} from "../common/tags/tags.component";
 
 @Component({
     selector: 'upload-boundary-file',

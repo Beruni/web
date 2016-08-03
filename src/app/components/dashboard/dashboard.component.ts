@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
-import {ViewBoundaryFileComponent} from "./upload_boundary_file/view_uploaded_boundary_file.component";
-import {ViewDataFileComponent} from "./upload_data_file/view_uploaded_data_file.component";
+import {ViewBoundaryFileComponent} from "./boundary_file/boundary-file-dashboard.component";
+import {ViewDataFileComponent} from "./data_file/data-file-dashboard.component";
 
 @Component({
     selector: 'dashboard',
