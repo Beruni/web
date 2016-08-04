@@ -35,24 +35,7 @@ table.ui.celled.table
                     a.item 4
                     a.icon.item
                         i.right.chevron.icon
-button.ui.secondary.button((click)='modal.show({inverted: true})') Upload
-sm-modal(title='UPLOAD BOUNDARY FILE', #modal='')
-    modal-content
-        | Select A File
-        input.upload-button(type="file")
-        br
-        | Supported formats: GeoJSON
-        br
-        | Tags:
-        br
-        tags-input([(ngModel)]="boundaryFile.tags")
-        br
-        | These helps others to find your files:
-    modal-actions
-        .ui.buttons
-            button.ui.secondary.button((click)='modal.hide()') Upload
-
-p
-    upload-boundary-file
+button.ui.secondary.button((click)='showModal()') Upload
+upload-boundary-modal
 p
     upload-data-file
