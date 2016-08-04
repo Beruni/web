@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import "rxjs/add/operator/toPromise";
-import {UploadService} from "../../service/upload-interface";
-import {UploadableFile} from "../dashboard/data_file/uploadable-file";
+import {UploadService} from "./upload-interface";
+import {UploadableFile} from "../components/dashboard/data_file/uploadable-file";
 
 @Injectable()
 export class BoundaryFileService implements UploadService{

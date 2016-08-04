@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {BoundaryFileService} from "../../shared/boundary-file.service";
+import {BoundaryFileService} from "../../../service/boundary-file.service";
 import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
 
 

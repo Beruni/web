@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { FacebookLoginService } from './fblogin.service';
-import { UserService } from '../shared/user.service';
+import { FacebookLoginService } from '../../service/fblogin.service';
+import { UserService } from '../../service/user.service';
 import { LocalStorageService } from '../shared/local.storage.service';
 
 
