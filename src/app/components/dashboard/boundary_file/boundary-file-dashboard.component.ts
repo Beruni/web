@@ -1,26 +1,23 @@
 import {Component, ViewChild} from "@angular/core";
-import {TagsInputComponent} from "../common/tags/tags.component";
-import {SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES} from "ng-semantic";
-import { UploadBoundaryFileComponent } from '../upload_modal/upload-boundary-modal.component'
+import {BoundaryFileService} from "../../shared/boundary-file.service";
+import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
 
 
 @Component({
   selector: 'view-upload-boundary-file',
   template: require('./boundary-file-dashboard.component.jade'),
-  directives: [SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES, TagsInputComponent, UploadBoundaryFileComponent]
+  directives: [UploadModalComponent],
+  providers: [BoundaryFileService]
 })
 
 export class ViewBoundaryFileComponent{
-  public boundaryFile:{
-    tags:any[]
-  } = {tags: []};
+  @ViewChild(UploadModalComponent)
+  uploadModal:UploadModalComponent;
 
-  @ViewChild(UploadBoundaryFileComponent) uploadBoundaryFileComponent : UploadBoundaryFileComponent;
-
-  constructor() { }
-
-  showModal(){
-    this.uploadBoundaryFileComponent.showModal();
+  constructor(private boundaryFileService:BoundaryFileService) {
   }
 
+  ngOnInit() {
+    this.uploadModal.uploadService = this.boundaryFileService;
+  }
 }

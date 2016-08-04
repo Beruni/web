@@ -2,41 +2,55 @@ import {Component, ViewChild, Input} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
 import {DataFileService} from "../../../../service/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
-import {DataFile} from "../../data_file/data-file";
+import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../service/upload-interface";
 
 @Component({
     selector: 'upload-modal',
     template: require('./upload-modal.component.jade'),
+    styles: [require('./upload-modal.component.scss')],
     directives: [TagsInputComponent, SemanticModalComponent],
     providers: [DataFileService]
 })
 
-export class UploadModalComponent {
+export class UploadModalComponent implements EventListenerObject {
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
     @Input() title:String;
     @Input() uploadFilePlaceholder:String;
-    @Input() supportedFormats:String;
+    @Input() formats:String;
 
+    @Input() supportedFormats:String;
     public tags:String[] = [];
     public name:String = '';
     public file:File;
     public uploadService:UploadService;
 
-    showModal(){
+    showModal() {
         this.modal.show({inverted: true})
     }
 
     uploadSelectedFile() {
         if (this.file) {
-            var dataFile = new DataFile(this.name, this.file, this.tags);
-            this.uploadService.upload(dataFile);
+            var file = new UploadableFile(this.name, this.file, this.tags);
+            this.uploadService.upload(file, this);
         }
     }
 
     selectedFile(event:any) {
         this.file = event.target.files[0];
+    }
+
+    handleEvent(event:ProgressEvent):void {
+        var progressbar = document.getElementById("progressbar");
+        var progressbarContainer = document.getElementById("progressbarContainer");
+        var status = document.getElementById("status");
+        var uploadPercentage = Math.ceil(event.loaded / event.total * 100);
+        if (uploadPercentage) {
+            progressbarContainer.style.display = "block";
+            progressbar.style.width = uploadPercentage + '%';
+            status.innerHTML = uploadPercentage + '%';
+        }
     }
 }

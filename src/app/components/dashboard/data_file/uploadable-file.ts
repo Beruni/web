@@ -1,4 +1,4 @@
-export class DataFile {
+export class UploadableFile {
     constructor(public title:String,
                 public file:File,
                 public tags:String[]) {

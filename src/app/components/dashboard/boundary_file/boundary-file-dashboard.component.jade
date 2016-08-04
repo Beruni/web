@@ -35,7 +35,6 @@ table.ui.celled.table
                     a.item 4
                     a.icon.item
                         i.right.chevron.icon
-button.ui.secondary.button((click)='showModal()') Upload
-upload-boundary-modal
+button.ui.secondary.button((click)='uploadModal.showModal()') Upload
 p
-    upload-data-file
+    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Title of boundary file'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')

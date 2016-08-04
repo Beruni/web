@@ -1,7 +1,7 @@
 sm-modal(title='{{title}}')
     modal-content
         | Select A File
-        input.upload-button(type="file", accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", (change)="selectedFile($event)")
+        input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)")
         br
         | Supported formats:{{supportedFormats}}
         br
@@ -11,7 +11,11 @@ sm-modal(title='{{title}}')
         tags-input([(ngModel)]="tags")
         br
         | These helps others to find your files:
+
+        div#container
+            div#progressbarContainer
+                div#progressbar
+            div#status
     modal-actions
         .ui.buttons
-            button.ui.secondary.button((click)='uploadSelectedFile()') Upload
-
+            button.ui.secondary.button((click)="uploadSelectedFile()")#upload_button Upload
