@@ -1,4 +1,4 @@
 | View uploaded data file
 button.ui.secondary.button((click)='uploadModal.showModal()') Upload
 p
-    upload-modal(#uploadModal='')
+    upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Title of data file'", [supportedFormats]="'CSV'", #uploadModal='')

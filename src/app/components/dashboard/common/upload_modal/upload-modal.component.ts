@@ -1,4 +1,4 @@
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, Input} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
 import {DataFileService} from "../../../shared/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
@@ -15,6 +15,10 @@ export class UploadModalComponent {
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
+    @Input() title:String;
+    @Input() uploadFilePlaceholder:String;
+    @Input() supportedFormats:String;
+
     public tags:String[] = [];
     public name:String = '';
     public file:File;

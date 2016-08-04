@@ -1,11 +1,11 @@
-sm-modal(title='UPLOAD DATA FILE')
+sm-modal(title='{{title}}')
     modal-content
         | Select A File
         input.upload-button(type="file", accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", (change)="selectedFile($event)")
         br
-        | Supported formats: csv, xlsx
+        | Supported formats:{{supportedFormats}}
         br
-        input(placeholder="Title of data file", [(ngModel)]="name")
+        input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name")
         br
         | Tags:
         tags-input([(ngModel)]="tags")

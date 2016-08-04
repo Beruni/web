@@ -6,7 +6,7 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 @Component({
     selector: 'upload-boundary-modal',
     template: require('./upload-boundary-modal.component.jade'),
-    styles: [require('../boundary_file/upload-boundary-file.component.scss')],
+    styles: [require('./upload-boundary-file.component.scss')],
     directives: [TagsInputComponent, SemanticModalComponent],
     providers:[BoundaryFileService]
 })
