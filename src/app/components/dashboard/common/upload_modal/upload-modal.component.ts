@@ -1,8 +1,9 @@
 import {Component, ViewChild, Input} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
-import {DataFileService} from "../../../shared/data-file.service";
+import {DataFileService} from "../../../../service/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {DataFile} from "../../data_file/data-file";
+import {UploadService} from "../../../../service/upload-interface";
 
 @Component({
     selector: 'upload-modal',
@@ -22,9 +23,7 @@ export class UploadModalComponent {
     public tags:String[] = [];
     public name:String = '';
     public file:File;
-
-    constructor(private dataFileService:DataFileService) {
-    }
+    public uploadService:UploadService;
 
     showModal(){
         this.modal.show({inverted: true})
@@ -33,7 +32,7 @@ export class UploadModalComponent {
     uploadSelectedFile() {
         if (this.file) {
             var dataFile = new DataFile(this.name, this.file, this.tags);
-            this.dataFileService.upload(dataFile);
+            this.uploadService.upload(dataFile);
         }
     }
 

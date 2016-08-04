@@ -1,10 +1,11 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {DataFile} from "../dashboard/data_file/data-file";
+import {DataFile} from "../components/dashboard/data_file/data-file";
+import {UploadService} from "./upload-interface"
 
 @Injectable()
-export class DataFileService {
+export class DataFileService implements UploadService{
     private baseURL:string = 'http://127.0.0.1:3010';
 
     constructor(private http:Http) {
