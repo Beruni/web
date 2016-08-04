@@ -11,25 +11,27 @@ import {ViewDataFileComponent} from "./data_file/data-file-dashboard.component";
 })
 
 export class DashboardComponent {
+    isOnBoundaryFile = true;
+    isOnVisualization = false;
+    isOnDataFile = false;
+
     tabNumber: number = 0; 
     onSelectBoundaryFile() {
-        this.removeActiveClassed()
-        $("#boundary-file").addClass("active");
+        this.disableAllActiveTabs();
+        this.isOnBoundaryFile = true;
         this.tabNumber = 0
     }
-    removeActiveClassed(){
-        $("#boundary-file").removeClass("active");
-        $("#data-file").removeClass("active");
-        $("#visualization").removeClass("active");
+    disableAllActiveTabs(){
+        this.isOnBoundaryFile = this.isOnDataFile = this.isOnVisualization = false;
     }
     onSelectDataFile(){
-        this.removeActiveClassed()
-        $("#data-file").addClass("active");
+        this.disableAllActiveTabs();
+        this.isOnDataFile = true;
         this.tabNumber = 1
     }
-    onVisualization(id:string){
-        this.removeActiveClassed()
-        $("#visualization").addClass("active");
+    onVisualization(){
+        this.disableAllActiveTabs();
+        this.isOnVisualization = true;
         this.tabNumber = 2
     }
     checkCurrentTab(){
