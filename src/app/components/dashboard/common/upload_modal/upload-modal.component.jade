@@ -1,21 +1,20 @@
 sm-modal(title='{{title}}')
     modal-content
-        | Select A File
-        input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)")
-        br
-        | Supported formats:{{supportedFormats}}
-        br
-        input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name")
-        br
-        | Tags:
-        tags-input([(ngModel)]="tags")
-        br
-        | These helps others to find your files:
+        form
+            | Select A File
+            input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)", required)
+            br
+            | Supported formats:{{supportedFormats}}
+            br
+            input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name", type='text', required)
+            br
+            | Tags:
+            tags-input([(ngModel)]="tags")
+            br
+            | These helps others to find your files:
 
-        div#container
-            div#progressbarContainer
-                div#progressbar
-            div#status
-    modal-actions
-        .ui.buttons
-            button.ui.secondary.button((click)="uploadSelectedFile()")#upload_button Upload
+            div#container
+                div#progressbarContainer
+                    div#progressbar
+                div#status
+            button.ui.secondary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
