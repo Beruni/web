@@ -23,6 +23,8 @@ export class ViewBoundaryFileComponent{
   }
 
   fetchBoundaryFiles(){
-    this.boundaryFileService.fetchBoundaryFiles()
+    this.boundaryFileService.fetchBoundaryFiles(function(data:JSON) {
+      console.log(JSON.stringify(data));
+    })
   }
 }
