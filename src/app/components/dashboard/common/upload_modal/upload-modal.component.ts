@@ -32,6 +32,10 @@ export class UploadModalComponent implements EventListenerObject {
         this.modal.show({inverted: true})
     }
 
+    hideModal() {
+        this.modal.hide()
+    }
+
     uploadSelectedFile() {
         if (this.file) {
             var file = new UploadableFile(this.name, this.file, this.tags);
@@ -53,5 +57,6 @@ export class UploadModalComponent implements EventListenerObject {
             progressbar.style.width = uploadPercentage + '%';
             status.innerHTML = uploadPercentage + '%';
         }
+        (uploadPercentage == 100) && this.hideModal();
     }
 }
