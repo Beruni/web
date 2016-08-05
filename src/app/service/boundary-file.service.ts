@@ -15,20 +15,21 @@ export class BoundaryFileService implements UploadService {
     }
 
     upload(boundaryFile:UploadableFile, listener:EventListenerObject):Promise<any> {
-        var data = new FormData();
-        data.append("boundaryFile", boundaryFile.file);
-        data.append("title", boundaryFile.title);
-        data.append("tags", boundaryFile.tags.toString());
+        return new Promise(function(reject, resolve){
+            var data = new FormData();
+            data.append("boundaryFile", boundaryFile.file);
+            data.append("title", boundaryFile.title);
+            data.append("tags", boundaryFile.tags.toString());
 
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            console.log(request.response);
-        };
-        request.upload.addEventListener('progress', listener, false);
-        request.open("POST", this.baseURL + "/upload/");
-        request.setRequestHeader("authorization",this.token);
-        request.send(data);
-        return undefined;
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                console.log(request.response);
+            };
+            request.upload.addEventListener('progress', listener, false);
+            request.open("POST", this.baseURL + "/upload/");
+            request.setRequestHeader("authorization",this.token);
+            request.send(data);
+        });
     }
 
     fetchBoundaryFiles() {
