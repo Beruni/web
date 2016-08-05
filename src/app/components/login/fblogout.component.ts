@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { LocalStorageService } from '../shared/local.storage.service';
+import { LocalStorageService } from '../../service/local.storage.service';
 
 @Component({
     selector : 'fblogout',

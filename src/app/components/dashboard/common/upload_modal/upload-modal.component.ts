@@ -4,13 +4,14 @@ import {DataFileService} from "../../../../service/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../service/upload-interface";
+import {BoundaryFileService} from "../../../../service/boundary-file.service";
 
 @Component({
     selector: 'upload-modal',
     template: require('./upload-modal.component.jade'),
     styles: [require('./upload-modal.component.scss')],
     directives: [TagsInputComponent, SemanticModalComponent],
-    providers: [DataFileService]
+    providers: [DataFileService,BoundaryFileService]
 })
 
 export class UploadModalComponent implements EventListenerObject {
