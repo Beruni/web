@@ -11,7 +11,7 @@ div.pusher
                     button.ui.twitter.button
                         i.twitter.icon
                         | Login with Twitter
-                    div([ngSwitch]="checkTokenValidation()")
+                    div([ngSwitch]="isTokenExpired()")
                         template([ngSwitchCase]='true')
                             fblogin
                         template([ngSwitchCase]='false')

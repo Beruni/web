@@ -16,11 +16,7 @@ export class HeaderComponent {
 	
 	constructor(private localStorageService : LocalStorageService){}
 
-	checkTokenValidation(){
-		var jwtHelper : JwtHelper =  new JwtHelper();
-		var token = this.localStorageService.getUserToken();
-		if(token)
-			return jwtHelper.isTokenExpired(token);
-		return true;
+	isTokenExpired(){
+		return this.localStorageService.isTokenExpired();
 	}
 }
