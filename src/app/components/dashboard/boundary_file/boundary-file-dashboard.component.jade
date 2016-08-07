@@ -11,18 +11,10 @@ table.ui.celled.table
             th Uploaded date
             th Tags
     tbody
-        tr
-            td District of India
-            td March 13, 2016
-            td India, District
-        tr
-            td Boundaries of Odisha
-            td April 15, 2016
-            td India, Odisha
-        tr
-            td States of India
-            td April 16, 2016
-            td India, States
+        tr(*ngFor='let file of files')
+            td {{file.title}}
+            td {{formattedDate(file.time)}}
+            td {{file.tags}}
     tfoot
         tr
             th(colspan='3')

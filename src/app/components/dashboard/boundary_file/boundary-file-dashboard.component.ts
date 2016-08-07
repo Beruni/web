@@ -14,17 +14,22 @@ export class ViewBoundaryFileComponent{
   @ViewChild(UploadModalComponent)
   uploadModal:UploadModalComponent;
 
+  files:JSON = null;
+
   constructor(private boundaryFileService:BoundaryFileService) {
+
   }
 
   ngOnInit() {
     this.uploadModal.uploadService = this.boundaryFileService;
-    this.fetchBoundaryFiles();
-  }
-
-  fetchBoundaryFiles(){
-    this.boundaryFileService.fetchBoundaryFiles(function(data:JSON) {
-      console.log(JSON.stringify(data));
+    this.boundaryFileService.fetchBoundaryFiles((data:JSON) => {
+      this.files = data;
     })
   }
+
+  formattedDate(date:string){
+    var datString = new Date(date).toDateString();
+    return datString.split(' ').slice(0, 4).join(' ');
+  }
+
 }
