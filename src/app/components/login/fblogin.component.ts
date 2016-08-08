@@ -47,6 +47,7 @@ export class FbLoginComponent {
     private handleLogin(res: any) {
       var data =  res.json();
       this.localStorageService.storeUserToken(data.user_token);
+        window.location.href = 'http://localhost:8080/dashboard';
     }
    
 }

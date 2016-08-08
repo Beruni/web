@@ -13,5 +13,6 @@ export class FbLogoutComponent {
     
     logout(){
         this.localStorageService.deleteToken();
+        window.location.href = 'http://localhost:8080';
     }
 }
