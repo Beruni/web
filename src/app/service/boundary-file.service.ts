@@ -7,7 +7,8 @@ import {LocalStorageService} from "./local.storage.service";
 
 @Injectable()
 export class BoundaryFileService implements UploadService {
-    private baseURL:string = 'http://127.0.0.1:3000';
+    //TODO: move it to a separate constant file/class.
+    private static BASE_URL:string = 'http://127.0.0.1:3000';
     private token:string;
 
     constructor(private http: Http, private localStorageService : LocalStorageService) {
@@ -15,6 +16,8 @@ export class BoundaryFileService implements UploadService {
     }
 
     upload(boundaryFile:UploadableFile, listener:EventListenerObject):Promise<any> {
+        //TODO: find a better way of doing this, and avoid promise and use observable instead.
+        var token = this.token;
         return new Promise(function(reject, resolve){
             var data = new FormData();
             data.append("boundaryFile", boundaryFile.file);
@@ -26,8 +29,8 @@ export class BoundaryFileService implements UploadService {
                 console.log(request.response);
             };
             request.upload.addEventListener('progress', listener, false);
-            request.open("POST", this.baseURL + "/upload/");
-            request.setRequestHeader("authorization",this.token);
+            request.open("POST", BoundaryFileService.BASE_URL + "/upload/");
+            request.setRequestHeader("authorization",token);
             request.send(data);
         });
     }
@@ -39,7 +42,7 @@ export class BoundaryFileService implements UploadService {
         });
         let options = new RequestOptions({headers: headers});
 
-        this.http.get(this.baseURL + "/fetchFiles", options)
+        this.http.get(BoundaryFileService.BASE_URL + "/fetchFiles", options)
             .map(res => res.json())
             .subscribe(data => callback(data));
     }

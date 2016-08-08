@@ -42,7 +42,7 @@ export class UploadModalComponent implements EventListenerObject {
             this.uploadService.upload(file, this).then(function (e) {
                 console.log('success');
             }, function (e) {
-                console.log('error');
+                console.log('error' + e);
             });
         }
     }

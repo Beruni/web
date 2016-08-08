@@ -1,12 +1,11 @@
 import {Injectable} from "@angular/core";
-import {Headers, Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {UploadableFile} from "../components/dashboard/data_file/uploadable-file";
 import {UploadService} from "./upload-interface"
 
 @Injectable()
 export class DataFileService implements UploadService{
-    private baseURL:string = 'http://127.0.0.1:3010';
+    private static BASE_URL:string = 'http://127.0.0.1:3010';
 
     upload(dataFile:UploadableFile, listener:EventListenerObject):Promise<any> {
         return new Promise(function(reject, resolve) {
@@ -21,7 +20,7 @@ export class DataFileService implements UploadService{
             };
 
             request.upload.addEventListener('progress', listener, false);
-            request.open("POST", this.baseURL + '/upload/');
+            request.open("POST", DataFileService.BASE_URL + '/upload/');
             request.send(formData);
         });
     }
