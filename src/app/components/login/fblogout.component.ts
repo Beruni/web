@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { LocalStorageService } from '../../service/local.storage.service';
+import {Router} from "@angular/router";
 
 @Component({
     selector : 'fblogout',
@@ -9,10 +10,11 @@ import { LocalStorageService } from '../../service/local.storage.service';
 
 export class FbLogoutComponent {
     
-    constructor(private localStorageService:LocalStorageService){}
+    constructor(private localStorageService:LocalStorageService,
+                private router:Router){}
     
     logout(){
         this.localStorageService.deleteToken();
-        window.location.href = 'http://localhost:8080';
+        this.router.navigate(['home'])
     }
 }

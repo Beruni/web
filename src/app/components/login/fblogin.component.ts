@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FacebookLoginService } from '../../service/fblogin.service';
 import { UserService } from '../../service/user.service';
 import { LocalStorageService } from '../../service/local.storage.service';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class FbLoginComponent {
     constructor(
         private userService: UserService, 
         private facebookLoginService: FacebookLoginService,
-        private localStorageService: LocalStorageService) {
+        private localStorageService: LocalStorageService,
+        private router:Router) {
     }
 
     loginWithFacebook() {
@@ -47,7 +49,7 @@ export class FbLoginComponent {
     private handleLogin(res: any) {
       var data =  res.json();
       this.localStorageService.storeUserToken(data.user_token);
-        window.location.href = 'http://localhost:8080/dashboard';
+        this.router.navigate(['dashboard'])
     }
    
 }
