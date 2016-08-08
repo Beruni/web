@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
-
+import {Component} from "@angular/core";
 import {ViewBoundaryFileComponent} from "./boundary_file/boundary-file-dashboard.component";
 import {ViewDataFileComponent} from "./data_file/data-file-dashboard.component";
+import {HomeComponent} from "../home/home.component";
+import {ROUTER_DIRECTIVES} from "@angular/router";
 
 @Component({
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [ViewBoundaryFileComponent, ViewDataFileComponent]
+    directives: [ViewBoundaryFileComponent, ViewDataFileComponent, HomeComponent, ROUTER_DIRECTIVES]
 })
 
 export class DashboardComponent {
