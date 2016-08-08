@@ -24,20 +24,7 @@ import {TagInputItemComponent} from './tag-input-item.component';
     #tagInputRef>`,
 
     styles: [`
-    :host {
-      display: block;
-      box-shadow: 0 1px #ccc;
-      padding: 5px 0;
-    }
-
-    :host.ng2-tag-input-focus {
-      box-shadow: 0 2px #0d8bff;
-    }
-
-    .ng2-tag-input-field {
-      box-shadow: none;
-      border: 0;
-    }
+    
   `],
     directives: [TagInputItemComponent]
 })
