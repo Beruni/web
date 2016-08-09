@@ -6,11 +6,8 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 
 @Component({
     selector: 'my-app',
-    template: `<my-header></my-header>
-	<router-outlet></router-outlet>
-	<my-footer></my-footer>`,
+    template: require('./app.component.jade'),
     styles: [require('./app.component.scss')],
-    providers: [],
     directives: [HeaderComponent, FooterComponent, ROUTER_DIRECTIVES]
 })
 
