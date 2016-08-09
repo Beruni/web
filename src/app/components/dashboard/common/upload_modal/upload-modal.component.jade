@@ -1,5 +1,6 @@
 sm-modal(title='{{title}}')
     modal-content
+        div([ngClass]='setClasses()')#completion-toast.ui.message {{showMessage}}
         form
             label
                 | Title:

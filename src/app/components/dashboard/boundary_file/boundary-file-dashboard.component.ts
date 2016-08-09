@@ -5,33 +5,33 @@ import {LocalStorageService} from "../../../services/local.storage.service";
 import {SearchPipe} from "../../../pipes/search.pipe";
 
 @Component({
-  selector: 'view-upload-boundary-file',
-  template: require('./boundary-file-dashboard.component.jade'),
-  directives: [UploadModalComponent],
-  pipes: [SearchPipe],
-  providers: [BoundaryFileService, LocalStorageService]
+
+    selector: 'view-upload-boundary-file',
+    template: require('./boundary-file-dashboard.component.jade'),
+    directives: [UploadModalComponent],
+    providers: [BoundaryFileService, LocalStorageService]
 })
 
-export class ViewBoundaryFileComponent{
-  @ViewChild(UploadModalComponent)
-  uploadModal:UploadModalComponent;
+export class ViewBoundaryFileComponent {
+    @ViewChild(UploadModalComponent)
+    uploadModal:UploadModalComponent;
 
-  files:JSON = null;
+    files:JSON = null;
 
-  constructor(private boundaryFileService:BoundaryFileService) {
+    constructor(private boundaryFileService:BoundaryFileService) {
 
-  }
+    }
 
-  ngOnInit() {
-    this.uploadModal.uploadService = this.boundaryFileService;
-    this.boundaryFileService.fetchBoundaryFiles((data:JSON) => {
-      this.files = data;
-    })
-  }
+    ngOnInit() {
+        this.uploadModal.uploadService = this.boundaryFileService;
+        this.boundaryFileService.fetchBoundaryFiles((data:JSON) => {
+            this.files = data;
+        })
+    }
 
-  formattedDate(date:string){
-    var datString = new Date(date).toDateString();
-    return datString.split(' ').slice(0, 4).join(' ');
-  }
+    formattedDate(date:string) {
+        var datString = new Date(date).toDateString();
+        return datString.split(' ').slice(0, 4).join(' ');
+    }
 
 }

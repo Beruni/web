@@ -1,20 +1,23 @@
-import {Component, ViewChild, Input} from "@angular/core";
+import {Component, ViewChild, Input, Injectable} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
 import {DataFileService} from "../../../../services/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../services/upload-interface";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
-
+import {ProgressListener} from "../listeners/progress-listener"
 @Component({
     selector: 'upload-modal',
     template: require('./upload-modal.component.jade'),
     styles: [require('./upload-modal.component.scss')],
     directives: [TagsInputComponent, SemanticModalComponent],
-    providers: [DataFileService,BoundaryFileService]
+    providers: [DataFileService, BoundaryFileService, ProgressListener]
 })
 
-export class UploadModalComponent implements EventListenerObject {
+export class UploadModalComponent {
+
+    constructor(private progressListener:ProgressListener) {
+    }
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
@@ -27,9 +30,37 @@ export class UploadModalComponent implements EventListenerObject {
     public name:String = '';
     public file:File;
     public uploadService:UploadService;
+    public successfullyUploaded:boolean;
+    public showMessage:string;
 
     showModal() {
         this.modal.show({inverted: true})
+    }
+
+    ngOnInit() {
+        this.hideCompletionToast()
+    }
+
+    showCompletionToast(isSuccessful:boolean, message:string) {
+        this.successfullyUploaded = isSuccessful;
+        this.showMessage = message;
+        var element = document.getElementById("completion-toast");
+        element.style.display = "block";
+        $('#completion-toast').delay(3000).hide(50);
+        $('#container').delay(3000).hide(50);
+    }
+
+    private hideCompletionToast() {
+        document.getElementById("completion-toast").style.display = "none";
+    }
+
+    setClasses() {
+        var setColor = {};
+        if (this.successfullyUploaded)
+            setColor = {green: true};
+        else
+            setColor = {red: true};
+        return setColor
     }
 
     hideModal() {
@@ -37,13 +68,13 @@ export class UploadModalComponent implements EventListenerObject {
     }
 
     uploadSelectedFile() {
+        var classReference = this;
         if (this.file) {
             var file = new UploadableFile(this.name, this.file, this.tags);
-            this.uploadService.upload(file, this).then(function (e) {
-                console.log('success');
-            }, function (e) {
-                console.log('error' + e);
-            });
+            this.uploadService.init().attachListener("progress", this.progressListener)
+                .upload(file, function (isSuccessFull:boolean, message:string) {
+                    classReference.showCompletionToast(isSuccessFull, message)
+                });
         }
     }
 
@@ -51,16 +82,4 @@ export class UploadModalComponent implements EventListenerObject {
         this.file = event.target.files[0];
     }
 
-    handleEvent(event:ProgressEvent):void {
-        var progressbar = document.getElementById("progressbar");
-        var progressbarContainer = document.getElementById("progressbarContainer");
-        var status = document.getElementById("status");
-        var uploadPercentage = Math.ceil(event.loaded / event.total * 100);
-        if (uploadPercentage) {
-            progressbarContainer.style.display = "block";
-            progressbar.style.width = uploadPercentage + '%';
-            status.innerHTML = uploadPercentage + '%';
-        }
-        (uploadPercentage == 100) && this.hideModal();
-    }
 }

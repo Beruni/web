@@ -10,29 +10,42 @@ export class BoundaryFileService implements UploadService {
     //TODO: move it to a separate constant file/class.
     private static BASE_URL:string = 'http://127.0.0.1:3000';
     private token:string;
+    private request:XMLHttpRequest;
 
-    constructor(private http: Http, private localStorageService : LocalStorageService) {
+    constructor(private http:Http, private localStorageService:LocalStorageService) {
         this.token = this.localStorageService.getUserToken();
     }
 
-    upload(boundaryFile:UploadableFile, listener:EventListenerObject):Promise<any> {
-        //TODO: find a better way of doing this, and avoid promise and use observable instead.
-        var token = this.token;
-        return new Promise(function(reject, resolve){
-            var data = new FormData();
-            data.append("boundaryFile", boundaryFile.file);
-            data.append("title", boundaryFile.title);
-            data.append("tags", boundaryFile.tags.toString());
+    upload(boundaryFile:UploadableFile, callback:Function):any {
+        var data = new FormData();
+        data.append("boundaryFile", boundaryFile.file);
+        data.append("title", boundaryFile.title);
+        data.append("tags", boundaryFile.tags.toString());
+        var requestReference = this.request;
+        this.request.onreadystatechange = function () {
+            console.log(requestReference.response);
+            if (requestReference.status == 403) {
+                callback(false, "file is fail to upload");
+            }
+            if (requestReference.status == 200) {
+                callback(true, "file is successfully uploaded");
+            }
+        };
 
-            var request = new XMLHttpRequest();
-            request.onreadystatechange = function () {
-                console.log(request.response);
-            };
-            request.upload.addEventListener('progress', listener, false);
-            request.open("POST", BoundaryFileService.BASE_URL + "/upload/");
-            request.setRequestHeader("authorization",token);
-            request.send(data);
-        });
+        this.request.send(data);
+    }
+
+
+    init():UploadService {
+        this.request = new XMLHttpRequest();
+        this.request.open("POST", BoundaryFileService.BASE_URL + "/upload/");
+        this.request.setRequestHeader("authorization", this.token);
+        return this;
+    }
+
+    attachListener(event:string, listener:EventListenerObject):UploadService {
+        this.request.upload.addEventListener(event, listener, false);
+        return this;
     }
 
     fetchBoundaryFiles(callback:any) {
