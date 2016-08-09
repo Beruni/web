@@ -5,6 +5,7 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../services/upload-interface";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
+
 import {ProgressListener} from "../listeners/progress-listener"
 @Component({
     selector: 'upload-modal',

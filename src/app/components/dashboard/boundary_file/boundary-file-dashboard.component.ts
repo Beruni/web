@@ -5,11 +5,11 @@ import {LocalStorageService} from "../../../services/local.storage.service";
 import {SearchPipe} from "../../../pipes/search.pipe";
 
 @Component({
-
-    selector: 'view-upload-boundary-file',
-    template: require('./boundary-file-dashboard.component.jade'),
-    directives: [UploadModalComponent],
-    providers: [BoundaryFileService, LocalStorageService]
+  selector: 'view-upload-boundary-file',
+  template: require('./boundary-file-dashboard.component.jade'),
+  directives: [UploadModalComponent],
+  pipes: [SearchPipe],
+  providers: [BoundaryFileService, LocalStorageService]
 })
 
 export class ViewBoundaryFileComponent {
