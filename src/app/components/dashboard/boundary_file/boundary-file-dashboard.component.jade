@@ -1,6 +1,6 @@
 .ui.category.search
     .ui.icon.input
-        input.prompt(type='text', placeholder='Search for boundary file...', [(ngModel)]="searchString")
+        input.prompt(type='text', placeholder='Search boundary file...', [(ngModel)]="searchString")
         i.search.icon
     .results
 
@@ -29,4 +29,4 @@ table.ui.celled.table
                         i.right.chevron.icon
 button.ui.secondary.button((click)='uploadModal.showModal()') Upload
 p
-    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Title of boundary file'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
+    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
