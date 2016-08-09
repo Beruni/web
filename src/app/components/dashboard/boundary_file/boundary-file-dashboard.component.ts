@@ -2,11 +2,13 @@ import {Component, ViewChild} from "@angular/core";
 import {BoundaryFileService} from "../../../services/boundary-file.service";
 import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
 import {LocalStorageService} from "../../../services/local.storage.service";
+import {SearchPipe} from "../../../pipes/search.pipe";
 
 @Component({
   selector: 'view-upload-boundary-file',
   template: require('./boundary-file-dashboard.component.jade'),
   directives: [UploadModalComponent],
+  pipes: [SearchPipe],
   providers: [BoundaryFileService, LocalStorageService]
 })
 

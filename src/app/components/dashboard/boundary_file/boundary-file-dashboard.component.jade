@@ -1,6 +1,6 @@
 .ui.category.search
     .ui.icon.input
-        input.prompt(type='text', placeholder='Search for boundary file...')
+        input.prompt(type='text', placeholder='Search for boundary file...', [(ngModel)]="searchString")
         i.search.icon
     .results
 
@@ -11,7 +11,7 @@ table.ui.celled.table
             th Uploaded date
             th Tags
     tbody
-        tr(*ngFor='let file of files')
+        tr(*ngFor='let file of files | search: searchString')
             td {{file.title}}
             td {{formattedDate(file.time)}}
             td {{file.tags}}
