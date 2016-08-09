@@ -24,7 +24,7 @@ export class BoundaryFileService implements UploadService {
         var requestReference = this.request;
         this.request.onreadystatechange = function () {
             console.log(requestReference.response);
-            if (requestReference.status == 403) {
+            if (requestReference.status == 406) {
                 callback(false, "file is fail to upload");
             }
             if (requestReference.status == 200) {
