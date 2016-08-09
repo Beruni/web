@@ -1,7 +1,7 @@
 import {Component, ViewChild} from "@angular/core";
-import {BoundaryFileService} from "../../../service/boundary-file.service";
+import {BoundaryFileService} from "../../../services/boundary-file.service";
 import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
-import {LocalStorageService} from "../../../service/local.storage.service";
+import {LocalStorageService} from "../../../services/local.storage.service";
 
 @Component({
   selector: 'view-upload-boundary-file',

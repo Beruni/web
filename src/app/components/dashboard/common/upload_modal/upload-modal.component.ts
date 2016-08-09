@@ -1,10 +1,10 @@
 import {Component, ViewChild, Input} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
-import {DataFileService} from "../../../../service/data-file.service";
+import {DataFileService} from "../../../../services/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {UploadableFile} from "../../data_file/uploadable-file";
-import {UploadService} from "../../../../service/upload-interface";
-import {BoundaryFileService} from "../../../../service/boundary-file.service";
+import {UploadService} from "../../../../services/upload-interface";
+import {BoundaryFileService} from "../../../../services/boundary-file.service";
 
 @Component({
     selector: 'upload-modal',

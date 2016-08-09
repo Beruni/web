@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FbLoginComponent } from '../login/fblogin.component';
 import { FbLogoutComponent } from '../login/fblogout.component';
-import { LocalStorageService } from '../../service/local.storage.service';
+import { LocalStorageService } from '../../services/local.storage.service';
 import { JwtHelper } from 'angular2-jwt';
 
 

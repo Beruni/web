@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { FacebookLoginService } from '../../service/fblogin.service';
-import { UserService } from '../../service/user.service';
-import { LocalStorageService } from '../../service/local.storage.service';
+import { FacebookLoginService } from '../../services/fblogin.service';
+import { UserService } from '../../services/user.service';
+import { LocalStorageService } from '../../services/local.storage.service';
 import {Router} from "@angular/router";
 
 

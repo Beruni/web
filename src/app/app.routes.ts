@@ -1,8 +1,8 @@
 import {provideRouter, RouterConfig} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {AuthGuard} from "./service/auth-guard-activate.service";
-import {LocalStorageService} from "./service/local.storage.service";
+import {AuthGuard} from "./services/auth-guard-activate.service";
+import {LocalStorageService} from "./services/local.storage.service";
 
 const routes: RouterConfig = [
     {

@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
-import {LocalStorageService} from "../../service/local.storage.service";
+import {LocalStorageService} from "../../services/local.storage.service";
 
 @Component({
     selector : 'home',

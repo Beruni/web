@@ -1,6 +1,6 @@
 import {Component, ViewChild, OnInit} from '@angular/core';
 import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
-import {DataFileService} from "../../../service/data-file.service";
+import {DataFileService} from "../../../services/data-file.service";
 
 @Component({
     selector: 'view-uploaded-data-file',

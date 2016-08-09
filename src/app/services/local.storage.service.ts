@@ -1,4 +1,4 @@
-import {Injectable, Directive} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {JwtHelper} from "angular2-jwt/angular2-jwt";
 
 
