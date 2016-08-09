@@ -29,7 +29,7 @@ import {TagInputItemComponent} from './tag-input-item.component';
     directives: [TagInputItemComponent]
 })
 export class TagsInputComponent {
-    @Input() placeholder: string = 'Add a tag';
+    @Input() placeholder: string = 'Add tags';
     @Input() ngModel: string[];
     @Input() delimiterCode: string = '188';
     @Input() addOnBlur: boolean = true;

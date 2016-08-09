@@ -5,8 +5,10 @@ import {LocalStorageService} from "../../services/local.storage.service";
 @Component({
     selector : 'home',
     template : require('./home.component.jade'),
+    styles: [require('./home.component.scss')],
     directives: [ROUTER_DIRECTIVES],
     providers:[LocalStorageService]
+
 })
 
 export class HomeComponent {

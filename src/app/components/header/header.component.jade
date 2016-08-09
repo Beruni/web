@@ -1,14 +1,12 @@
 div.pusher
     div.ui.inverted.vertical.masthead.center.aligned.segment
         div.ui.container
-
             div.ui.large.secondary.inverted.pointing.menu
                 a.toc.item
                     i.sidebar.icon
+                    big
+                        | Beruni
                 div.right.item
-                    button.ui.twitter.button
-                        i.twitter.icon
-                        | Login with Twitter
                     div([ngSwitch]="isTokenExpired()")
                         template([ngSwitchCase]='true')
                             fblogin

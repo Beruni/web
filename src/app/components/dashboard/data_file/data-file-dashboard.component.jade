@@ -1,4 +1,6 @@
-| View uploaded data file
+div
+    | View uploaded data file
+br
 button.ui.secondary.button((click)='uploadModal.showModal()') Upload
 p
     upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Title of data file'", [supportedFormats]="'CSV'", [formats]="'.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'", #uploadModal='')

@@ -6,8 +6,7 @@ sm-modal(title='{{title}}')
                 | Title:
             .ui.input
                 input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name", type='text', required)
-                .small.help_text
-                    | (Supported formats:{{supportedFormats}})
+            br
             br
             label
                 | Tags:
@@ -18,7 +17,7 @@ sm-modal(title='{{title}}')
                 | These helps others to find your files:
             br
             label
-                | Select a file:
+                | Select a GeoJSON file:
             .ui.input
                 input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)", required)
 
