@@ -1,36 +1,62 @@
 import {Injectable} from "@angular/core";
 import "rxjs/add/operator/toPromise";
+import {UploadService} from "./upload-interface";
 import {UploadableFile} from "../components/dashboard/data_file/uploadable-file";
-import {UploadService} from "./upload-interface"
+import {Http, Headers, RequestOptions} from "@angular/http";
+import {LocalStorageService} from "./local.storage.service";
 
 @Injectable()
 export class DataFileService implements UploadService {
+    //TODO: move it to a separate constant file/class.
+    private static BASE_URL:string = 'http://127.0.0.1:3002';
+    private token:string;
+    private request:XMLHttpRequest;
+
+    constructor(private http:Http, private localStorageService:LocalStorageService) {
+        this.token = this.localStorageService.getUserToken();
+    }
+
+    upload(dataFile:UploadableFile, callback:Function):any {
+        var data = new FormData();
+        data.append("dataFile", dataFile.file);
+        data.append("title", dataFile.title);
+        data.append("tags", dataFile.tags.toString());
+        var requestReference = this.request;
+        this.request.onreadystatechange = function () {
+            console.log(requestReference.response);
+            if (requestReference.status == 406) {
+                callback(false, "file is fail to upload");
+            }
+            if (requestReference.status == 200) {
+                callback(true, "file is successfully uploaded");
+            }
+        };
+
+        this.request.send(data);
+    }
+
+
     init():UploadService {
-        return undefined;
+        this.request = new XMLHttpRequest();
+        this.request.open("POST", DataFileService.BASE_URL + "/upload/");
+        this.request.setRequestHeader("authorization", this.token);
+        return this;
     }
 
     attachListener(event:string, listener:EventListenerObject):UploadService {
-        return undefined;
+        this.request.upload.addEventListener(event, listener, false);
+        return this;
     }
 
-    private static BASE_URL:string = 'http://127.0.0.1:3010';
+    fetchBoundaryFiles(callback:any) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': this.token
+        });
+        let options = new RequestOptions({headers: headers});
 
-    upload(dataFile:UploadableFile, callback:Function):any {
-        var formData = new FormData();
-        formData.append("data_file", dataFile.file, "some_file");
-        formData.append("file_title", dataFile.title);
-        formData.append("tags", dataFile.tags);
-
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            console.log(request.response);
-        };
-
-        // request.upload.addEventListener('progress', listener, false);
-        request.open("POST", DataFileService.BASE_URL + '/upload/');
-        request.send(formData);
-
-
+        this.http.get(DataFileService.BASE_URL + "/fetchFiles", options)
+            .map(res => res.json())
+            .subscribe(data => callback(data));
     }
-
 }

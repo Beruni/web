@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
-import {ViewBoundaryFileComponent} from "./boundary_file/boundary-file-dashboard.component";
-import {ViewDataFileComponent} from "./data_file/data-file-dashboard.component";
+import {BoundaryFileDashBoardComponent} from "./boundary_file/boundary-file-dashboard.component";
+import {DataFileDashboardComponent} from "./data_file/data-file-dashboard.component";
 import {HomeComponent} from "../home/home.component";
 import {ROUTER_DIRECTIVES} from "@angular/router";
 
@@ -8,7 +8,7 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [ViewBoundaryFileComponent, ViewDataFileComponent, HomeComponent, ROUTER_DIRECTIVES]
+    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent, HomeComponent, ROUTER_DIRECTIVES]
 })
 
 export class DashboardComponent {

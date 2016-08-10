@@ -8,7 +8,7 @@ import {DataFileService} from "../../../services/data-file.service";
     directives: [UploadModalComponent],
     providers: [DataFileService]
 })
-export class ViewDataFileComponent implements OnInit {
+export class DataFileDashboardComponent implements OnInit {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
 

@@ -14,7 +14,7 @@ import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagina
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class ViewBoundaryFileComponent {
+export class BoundaryFileDashBoardComponent {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
     @Input('data') files:JSON = null;
