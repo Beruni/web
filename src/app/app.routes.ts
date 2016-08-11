@@ -3,6 +3,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth-guard-activate.service";
 import {LocalStorageService} from "./services/local.storage.service";
+import {UploadVisualization} from "./components/dashboard/visualization/visualization-dashboard.component";
 
 const routes: RouterConfig = [
     {
@@ -12,7 +13,8 @@ const routes: RouterConfig = [
         canActivate: [AuthGuard]
     },
     { path: 'home', component: HomeComponent},
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path:'visualization-boundary-file', component: UploadVisualization }
 ];
 
 export const appRouterProviders = [

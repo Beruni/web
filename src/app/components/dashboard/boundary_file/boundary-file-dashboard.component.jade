@@ -12,7 +12,7 @@ table.ui.celled.table
             th Tags
     tbody
         tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}')
-            td {{file.title}}
+            td((click)='openWindow()') {{file.title}}
             td {{formattedDate(file.time)}}
             td {{file.tags}}
     tfoot
