@@ -59,4 +59,16 @@ export class BoundaryFileService implements UploadService {
             .map(res => res.json())
             .subscribe(data => callback(data));
     }
+
+    fetchBoundaryFileById(fileId:string, callback:any) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': this.token
+        });
+        let options = new RequestOptions({headers: headers});
+
+        this.http.get(BoundaryFileService.BASE_URL + "/fetchFile/:"+ fileId, options)
+            .map(res => res.json())
+            .subscribe(data => callback(data));
+    }
 }

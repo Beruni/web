@@ -1,17 +1,27 @@
-import {Component, Input, ViewChild} from "@angular/core"
-import {SemanticModalComponent} from "ng-semantic/ng-semantic";
-import * as L from "leaflet"
+import {Component} from "@angular/core";
+import * as L from "leaflet";
+import {BoundaryFileService} from "../../../services/boundary-file.service";
+import {Router} from "@angular/router";
+
 @Component({
-    selector: 'upload-visualization-modal',
+    selector: 'visualization-boundary-file',
     template: require('./visualization-dashboard.component.jade'),
-    directives: [SemanticModalComponent]
+    providers: [BoundaryFileService]
 })
 
-export class UploadVisualization {
-    @ViewChild(SemanticModalComponent)
-    private modal:SemanticModalComponent;
+export class VisualizationDashBoardComponent {
+
+    fileData : JSON = null;
+
+    constructor(private boundaryFileService: BoundaryFileService,private router: Router){}
 
     ngOnInit() {
+        var query = this.router.url.split('/');
+        var fileId = query[query.length - 1];
+        this.boundaryFileService.fetchBoundaryFileById(fileId, (data:JSON) => {
+            this.fileData = data;
+            console.log(data);
+        })
         this.loadMap();
     }
 
@@ -20,8 +30,4 @@ export class UploadVisualization {
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
     }
 
-    //
-    // showModal() {
-    //     this.modal.show();
-    // }
 }

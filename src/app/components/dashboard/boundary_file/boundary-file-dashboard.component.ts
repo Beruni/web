@@ -4,23 +4,21 @@ import {UploadModalComponent} from "../common/upload_modal/upload-modal.componen
 import {LocalStorageService} from "../../../services/local.storage.service";
 import {SearchPipe} from "../../../pipes/search.pipe";
 import {PaginatePipe, PaginationControlsCmp, PaginationService} from "ng2-pagination";
-import {UploadVisualization} from "../visualization/visualization-dashboard.component";
 import {Router} from "@angular/router";
 
 @Component({
     selector: 'view-upload-boundary-file',
     template: require('./boundary-file-dashboard.component.jade'),
-    directives: [UploadModalComponent, PaginationControlsCmp, UploadVisualization],
+    directives: [UploadModalComponent, PaginationControlsCmp],
     pipes: [SearchPipe, PaginatePipe],
-    providers: [BoundaryFileService, LocalStorageService, PaginationService, UploadVisualization],
+    providers: [BoundaryFileService, LocalStorageService, PaginationService],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class BoundaryFileDashBoardComponent {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
-    @ViewChild(UploadVisualization)
-    uploadVisualizationModal:UploadVisualization;
+
     @Input('data') files:JSON = null;
 
     constructor(private boundaryFileService:BoundaryFileService, private router:Router) {
@@ -39,9 +37,8 @@ export class BoundaryFileDashBoardComponent {
         return datString.split(' ').slice(0, 4).join(' ');
     }
 
-    openWindow() {
-        this.router.navigate(['visualization-boundary-file']);
-        // window.open('upload-visualization-modal')
+    openWindow(event: any) {
+        var fileId = event.path[1].cells[3].innerHTML;
+        this.router.navigate(['visualization-boundary-file/:' + fileId]);
     }
-
 }
