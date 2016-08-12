@@ -11,15 +11,13 @@ import {Router} from "@angular/router";
 
 export class VisualizationDashBoardComponent {
 
-    fileData : JSON = null;
-
     constructor(private boundaryFileService: BoundaryFileService,private router: Router){}
 
     ngOnInit() {
         var query = this.router.url.split('/');
         var fileId = query[query.length - 1];
         this.boundaryFileService.fetchBoundaryFileById(fileId, (data:JSON) => {
-            this.fileData = data;
+            //TODO: populate this json to map
             console.log(data);
         })
         this.loadMap();
