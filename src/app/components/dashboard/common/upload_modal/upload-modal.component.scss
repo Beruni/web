@@ -16,7 +16,9 @@
 }
 
 #upload_button{
-  margin-left: 87%;
+  margin-left: 0%;
+  margin-top: 3%;
+  width: 40%;
 }
 
 .small{
@@ -27,3 +29,18 @@
 label{
   padding-right: 1%
 }
+
+#map {
+  margin-top: -2%;
+  height: 21em;
+  width: 47%;
+  margin-right: -2%;
+  float: right;
+  position: relative;
+}
+
+#inputContainer{
+  display: inline-block;
+  width: 53%;
+}
+

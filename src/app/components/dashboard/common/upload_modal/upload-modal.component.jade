@@ -1,28 +1,31 @@
+link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
 sm-modal(title='{{title}}')
     modal-content
-        div([ngClass]='setClasses()')#completion-toast.ui.message {{showMessage}}
         form
-            label
-                | Title:
-            .ui.input
-                input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name", type='text', required)
-            br
-            br
-            label
-                | Tags:
-            .ui.input
-                tags-input([(ngModel)]="tags")
-            br
-            .small
-                | Helps in file search
-            br
-            label
-                | Select a GeoJSON file:
-            .ui.input
-                input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)", required)
+            div#inputContainer
+                label
+                    | Title:
+                .ui.input
+                    input(placeholder="{{uploadFilePlaceholder}}", [(ngModel)]="name", type='text', required)
+                br
+                br
+                label
+                    | Tags:
+                .ui.input
+                    tags-input([(ngModel)]="tags")
+                br
+                .small
+                    | Helps in file search
+                br
+                label
+                    | Select a GeoJSON file:
+                .ui.input
+                    input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)", required)
 
-            div#container
-                div#progressbarContainer
-                    div#progressbar
-                div#status
-            button.ui.secondary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
+                div#container
+                    div#progressbarContainer
+                        div#progressbar
+                    div#status
+                button.ui.secondary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
+            #map
+        div([ngClass]='setClasses()')#completion-toast.ui.message {{showMessage}}

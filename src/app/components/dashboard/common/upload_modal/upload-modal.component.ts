@@ -5,8 +5,7 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../services/upload-interface";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
-
-import {ProgressListener} from "../listeners/progress-listener"
+import {ProgressListener} from "../listeners/progress-listener";
 @Component({
     selector: 'upload-modal',
     template: require('./upload-modal.component.jade'),
@@ -15,6 +14,7 @@ import {ProgressListener} from "../listeners/progress-listener"
     providers: [DataFileService, BoundaryFileService, ProgressListener]
 })
 
+@Injectable()
 export class UploadModalComponent {
 
     constructor(private progressListener:ProgressListener) {
@@ -22,6 +22,7 @@ export class UploadModalComponent {
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
+
     @Input() title:String;
     @Input() uploadFilePlaceholder:String;
     @Input() formats:String;
@@ -80,7 +81,21 @@ export class UploadModalComponent {
     }
 
     selectedFile(event:any) {
+        var loadMap = this.loadMap;
         this.file = event.target.files[0];
+        var fileReader = new FileReader();
+        fileReader.readAsText(this.file);
+        fileReader.onload = function (e) {
+            loadMap(JSON.parse(fileReader.result))
+        }
+    }
+
+    loadMap(data:JSON) {
+        var layer = L.geoJson(data);
+        var center = layer.getBounds().getCenter();
+        var map = L.map('map').setView(center).fitBounds(layer.getBounds());
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        layer.addTo(map);
     }
 
 }
