@@ -24,11 +24,16 @@ export class DataFileService implements UploadService {
         var requestReference = this.request;
         this.request.onreadystatechange = function () {
             console.log(requestReference.response);
-            if (requestReference.status == 406) {
-                callback(false, "file is fail to upload");
-            }
-            if (requestReference.status == 200) {
-                callback(true, "file is successfully uploaded");
+            switch(requestReference.status){
+                case 406:
+                    callback(false, "Invalid file format failed to upload");
+                    break;
+                case 200:
+                    callback(true, "file is successfully uploaded");
+                    break;
+                case 500:
+                    callback(false, "Server error")
+                    break;
             }
         };
 
