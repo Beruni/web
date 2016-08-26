@@ -18,7 +18,7 @@ sm-modal(title='{{title}}')
                     | Helps in file search
                 br
                 label
-                    | Select a GeoJSON file:
+                    | Select a {{supportedFormats}} file:
                 .ui.input
                     input.upload-button(type="file", accept="{{formats}}", (change)="selectedFile($event)", required)
 
