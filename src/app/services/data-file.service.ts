@@ -53,7 +53,7 @@ export class DataFileService implements UploadService {
         return this;
     }
 
-    fetchBoundaryFiles(callback:any) {
+    fetchDataFiles(callback:any) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': this.token
