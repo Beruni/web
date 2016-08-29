@@ -12,15 +12,15 @@ import {ROUTER_DIRECTIVES} from "@angular/router";
 })
 
 export class DashboardComponent {
-    isOnBoundaryFile = true;
-    isOnVisualization = false;
+    isOnVisualization = true;
+    isOnBoundaryFile = false;
     isOnDataFile = false;
 
-    tabNumber: number = 0; 
+    tabNumber: number = 0;
     onSelectBoundaryFile() {
         this.disableAllActiveTabs();
         this.isOnBoundaryFile = true;
-        this.tabNumber = 0
+        this.tabNumber = 1
     }
     disableAllActiveTabs(){
         this.isOnBoundaryFile = this.isOnDataFile = this.isOnVisualization = false;
@@ -28,12 +28,12 @@ export class DashboardComponent {
     onSelectDataFile(){
         this.disableAllActiveTabs();
         this.isOnDataFile = true;
-        this.tabNumber = 1
+        this.tabNumber = 2
     }
     onVisualization(){
         this.disableAllActiveTabs();
         this.isOnVisualization = true;
-        this.tabNumber = 2
+        this.tabNumber = 0
     }
     checkCurrentTab(){
         return this.tabNumber;

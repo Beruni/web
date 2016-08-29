@@ -1,15 +1,15 @@
 import {Component} from "@angular/core";
-import {BoundaryFileService} from "../../../services/boundary-file.service";
+import {BoundaryFileService} from "../../../../services/boundary-file.service";
 import {Router} from "@angular/router";
-import {LoadMapService} from "../../../services/load-map.service";
+import {LoadMapService} from "../../../../services/load-map.service";
 
 @Component({
-    selector: 'visualization-boundary-file',
-    template: require('./visualization-dashboard.component.jade'),
+    selector: 'preview-boundary-file',
+    template: require('./preview-dashboard.component.jade'),
     providers: [BoundaryFileService, LoadMapService]
 })
 
-export class VisualizationDashBoardComponent {
+export class PreviewBoundaryFileComponent {
 
     constructor(private boundaryFileService:BoundaryFileService,private loadMapService:LoadMapService, private router:Router) {
     }

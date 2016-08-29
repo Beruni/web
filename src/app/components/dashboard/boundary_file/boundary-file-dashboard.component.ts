@@ -39,6 +39,6 @@ export class BoundaryFileDashBoardComponent {
 
     openWindow(event: any) {
         var fileId = event.path[1].cells[3].innerHTML;
-        this.router.navigate(['visualization-boundary-file/:' + fileId]);
+        this.router.navigate(['preview-boundary-file/:' + fileId]);
     }
 }

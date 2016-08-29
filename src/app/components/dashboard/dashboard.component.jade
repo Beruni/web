@@ -1,16 +1,16 @@
 .ui.container
     .ui.secondary.pointing.menu
+        a.item([ngClass]='{active: isOnVisualization}', (click)='onVisualization()')
+            | Visualization
         a.item([ngClass]='{active: isOnBoundaryFile}', (click)='onSelectBoundaryFile()')
             | Boundary files
         a.item([ngClass]='{active: isOnDataFile}', (click)='onSelectDataFile()')
             | Data files
-        a.item([ngClass]='{active: isOnVisualization}', (click)='onVisualization()')
-            | Visualization
     div([ngSwitch]="checkCurrentTab()")
-        template([ngSwitchCase]='0')
-            view-upload-boundary-file
         template([ngSwitchCase]='1')
-            view-uploaded-data-file
+            view-upload-boundary-file
         template([ngSwitchCase]='2')
+            view-uploaded-data-file
+        template([ngSwitchCase]='0')
             | this is visualization page
 
