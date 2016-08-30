@@ -22,5 +22,5 @@ table.ui.celled.table
                 pagination-controls((pageChange)='page = $event')
 button.ui.secondary.button((click)='uploadModal.showModal()') Upload
 p
-    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
+    upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')
     
