@@ -13,15 +13,18 @@ import {Visualization} from "./visualization/visualization.component";
 })
 
 export class DashboardComponent {
+    isBoundaryFileCompleted:boolean = false;
+    isDataFileCompleted:boolean = false;
 
     constructor(private route:Router){
 
     }
 
-    isBoundaryFileCompleted:boolean = false;
-
     selectedBoundaryFile(fileId: string){
         this.isBoundaryFileCompleted = true;
     }
 
+    selectedDataFile(fileId: string){
+        this.isDataFileCompleted = true;
+    }
 }

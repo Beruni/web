@@ -8,5 +8,9 @@
             .content()
                 .title Select Data
                 .description Choose CSV Dataset
+        .step([ngClass]="{disabled: !isDataFileCompleted, active:isDataFileCompleted}")
+            .content
+                .title Visualize
+                .description This is what you looked for
     view-upload-boundary-file(*ngIf='!isBoundaryFileCompleted', (selectedFile)='selectedBoundaryFile($event)')
     view-upload-data-file(*ngIf='isBoundaryFileCompleted')
