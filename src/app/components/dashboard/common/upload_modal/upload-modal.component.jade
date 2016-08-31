@@ -1,4 +1,3 @@
-link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
 sm-modal(title='{{title}}')
     modal-content
         form
@@ -26,6 +25,7 @@ sm-modal(title='{{title}}')
                     div#progressbarContainer
                         div#progressbar
                     div#status
-                button.ui.secondary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
-            #map
+                button.ui.primary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
+                button.ui.secondary.button((click)="hideModal()") Close
+            #map(*ngIf="showMap")
         div([ngClass]='setClasses()')#completion-toast.ui.message {{showMessage}}

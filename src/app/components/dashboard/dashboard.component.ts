@@ -2,40 +2,31 @@ import {Component} from "@angular/core";
 import {BoundaryFileDashBoardComponent} from "./boundary_file/boundary-file-dashboard.component";
 import {DataFileDashboardComponent} from "./data_file/data-file-dashboard.component";
 import {HomeComponent} from "../home/home.component";
-import {ROUTER_DIRECTIVES} from "@angular/router";
+import {ROUTER_DIRECTIVES, Router} from "@angular/router";
+import {Visualization} from "./visualization/visualization.component";
 
 @Component({
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent, HomeComponent, ROUTER_DIRECTIVES]
+    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent, Visualization, HomeComponent, ROUTER_DIRECTIVES]
 })
 
 export class DashboardComponent {
-    isOnVisualization = true;
-    isOnBoundaryFile = false;
-    isOnDataFile = false;
 
-    tabNumber: number = 0;
-    onSelectBoundaryFile() {
-        this.disableAllActiveTabs();
-        this.isOnBoundaryFile = true;
-        this.tabNumber = 1
+    constructor(private route:Router){
+
     }
-    disableAllActiveTabs(){
-        this.isOnBoundaryFile = this.isOnDataFile = this.isOnVisualization = false;
+
+    isBoundaryFileCompleted:boolean = false;
+
+    selectBoundaryFile(){
+        this.isBoundaryFileCompleted = true;
+        this.route.navigate(['boundary-files'])
     }
-    onSelectDataFile(){
-        this.disableAllActiveTabs();
-        this.isOnDataFile = true;
-        this.tabNumber = 2
+
+    selectDataFile(){
+       this.route.navigate(['data-files'])
     }
-    onVisualization(){
-        this.disableAllActiveTabs();
-        this.isOnVisualization = true;
-        this.tabNumber = 0
-    }
-    checkCurrentTab(){
-        return this.tabNumber;
-    }
+
 }

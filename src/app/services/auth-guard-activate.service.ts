@@ -9,9 +9,9 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean  {
         if (this.localStorageService.isTokenExpired()) {
-            this.router.navigate(['home'])
             return false;
         }
         return true;
     }
+
 }

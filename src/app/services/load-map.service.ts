@@ -2,7 +2,7 @@ import * as L from "leaflet";
 
 export class LoadMapService{
 
-    loadMap(data:JSON) {
+    loadMap(data:JSON){
         var layer = L.geoJson(data);
         var center = layer.getBounds().getCenter();
         var map = L.map('map').setView(center).fitBounds(layer.getBounds());

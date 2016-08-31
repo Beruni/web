@@ -1,26 +1,26 @@
-.ui.category.search
-    .ui.icon.input
-        input.prompt(type='text', placeholder='Search data file...', [(ngModel)]="searchString")
-        i.search.icon
-    .results
+.ui.container.dataFile
+    .ui.category.search
+        .ui.icon.input
+            input.prompt(type='text', placeholder='Search data file...', [(ngModel)]="searchString")
+            i.search.icon
+        .results
 
-table.ui.celled.table
-    thead
-        tr
-            th My file name
-            th Uploaded date
-            th Tags
-    tbody
-        tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}')
-            td {{file.title}}
-            td {{formattedDate(file.time)}}
-            td {{file.tags}}
-            td(style='display:none') {{file.fileId}}
-    tfoot
-        tr
-            th(colspan='3', style="text-align:right")
-                pagination-controls((pageChange)='page = $event')
-button.ui.secondary.button((click)='uploadModal.showModal()') Upload
-p
-    upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')
-    
+    table.ui.celled.table
+        thead
+            tr
+                th My file name
+                th Uploaded date
+                th Tags
+        tbody
+            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}')
+                td {{file.title}}
+                td {{formattedDate(file.time)}}
+                td {{file.tags}}
+                td(style='display:none') {{file.fileId}}
+        tfoot
+            tr
+                th(colspan='3', style="text-align:right")
+                    pagination-controls((pageChange)='page = $event')
+    button.ui.secondary.button((click)='uploadModal.showModal()') Upload
+    p
+        upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')

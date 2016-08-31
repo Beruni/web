@@ -9,6 +9,7 @@ import {SearchPipe} from "../../../pipes/search.pipe";
     selector: 'view-uploaded-data-file',
     template: require('./data-file-dashboard.component.jade'),
     directives: [UploadModalComponent, PaginationControlsCmp],
+    styles:[require('./data-file-dashboard.component.scss')],
     pipes: [SearchPipe, PaginatePipe],
     providers: [DataFileService, LocalStorageService, PaginationService],
     changeDetection: ChangeDetectionStrategy.OnPush

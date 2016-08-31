@@ -35,8 +35,10 @@ export class UploadModalComponent {
     public uploadService:UploadService;
     public successfullyUploaded:boolean;
     public showMessage:string;
+    public showMap:boolean = false;
 
     showModal() {
+        this.showMap = true;
         this.modal.show({inverted: true})
     }
 
@@ -67,6 +69,7 @@ export class UploadModalComponent {
     }
 
     hideModal() {
+        this.showMap = false;
         this.modal.hide()
     }
 

@@ -1,25 +1,27 @@
-.ui.category.search
-    .ui.icon.input
-        input.prompt(type='text', placeholder='Search boundary file...', [(ngModel)]="searchString")
-        i.search.icon
-    .results
+.ui.container.boundaryFile
+    .ui.category.search
+        .ui.icon.input
+            input.prompt(type='text', placeholder='Search boundary file...', [(ngModel)]="searchString")
+            i.search.icon
+        .results
 
-table.ui.celled.table
-    thead
-        tr
-            th My file name
-            th Uploaded date
-            th Tags
-    tbody
-        tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}', (click)='openWindow($event)')
-            td {{file.title}}
-            td {{formattedDate(file.time)}}
-            td {{file.tags}}
-            td(style='display:none') {{file.fileId}}
-    tfoot
-        tr
-            th(colspan='3', style="text-align:right")
-                pagination-controls((pageChange)='page = $event')
-button.ui.secondary.button((click)='uploadModal.showModal()') Upload
-p
-    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
+    table.ui.celled.table
+        thead
+            tr
+                th My file name
+                th Uploaded date
+                th Tags
+        tbody
+            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}', (click)='openWindow($event)')
+                td {{file.title}}
+                td {{formattedDate(file.time)}}
+                td {{file.tags}}
+                td(style='display:none') {{file.fileId}}
+        tfoot
+            tr
+                th(colspan='3', style="text-align:right")
+                    pagination-controls((pageChange)='page = $event')
+    button.ui.secondary.button((click)='uploadModal.showModal()') Upload
+    p
+        upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
+    preview-boundary-file
