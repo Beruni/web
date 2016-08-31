@@ -27,5 +27,5 @@ sm-modal(title='{{title}}')
                     div#status
                 button.ui.primary.button((click)="uploadSelectedFile()", type='submit')#upload_button Upload
                 button.ui.secondary.button((click)="hideModal()") Close
-            #map(*ngIf="showMap")
+            .uploadMap#map(*ngIf="showMap")
         div([ngClass]='setClasses()')#completion-toast.ui.message {{showMessage}}

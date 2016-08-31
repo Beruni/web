@@ -1,7 +1,7 @@
 .ui.container.dashboardContainer
     .ui.ordered.steps
         .active.step([ngClass]="{completed:isBoundaryFileCompleted}")
-            .content((click)='selectBoundaryFile()')
+            .content
                 .title Select your boundary
                 .description Choose a GeoJson for Map
         .step([ngClass]="{disabled: !isBoundaryFileCompleted, active:isBoundaryFileCompleted}", (click)='selectDataFile()')

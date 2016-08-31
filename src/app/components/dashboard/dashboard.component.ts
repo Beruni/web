@@ -22,7 +22,6 @@ export class DashboardComponent {
 
     selectBoundaryFile(){
         this.isBoundaryFileCompleted = true;
-        this.route.navigate(['boundary-files'])
     }
 
     selectDataFile(){

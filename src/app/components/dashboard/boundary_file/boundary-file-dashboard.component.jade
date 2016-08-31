@@ -12,7 +12,7 @@
                 th Uploaded date
                 th Tags
         tbody
-            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}', (click)='openWindow($event)')
+            tr.fileRow(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}', (click)='openWindow($event)')
                 td {{file.title}}
                 td {{formattedDate(file.time)}}
                 td {{file.tags}}
@@ -24,4 +24,4 @@
     button.ui.secondary.button((click)='uploadModal.showModal()') Upload
     p
         upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
-    preview-boundary-file
+preview-boundary-file

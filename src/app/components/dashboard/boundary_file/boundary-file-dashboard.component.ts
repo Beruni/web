@@ -4,7 +4,6 @@ import {UploadModalComponent} from "../common/upload_modal/upload-modal.componen
 import {LocalStorageService} from "../../../services/local.storage.service";
 import {SearchPipe} from "../../../pipes/search.pipe";
 import {PaginatePipe, PaginationControlsCmp, PaginationService} from "ng2-pagination";
-import {Router} from "@angular/router";
 import {PreviewBoundaryFileComponent} from "./preview_boundary_file/preview-dashboard.component";
 
 @Component({

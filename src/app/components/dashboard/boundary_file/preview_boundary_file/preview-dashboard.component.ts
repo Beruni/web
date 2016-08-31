@@ -16,25 +16,25 @@ export class PreviewBoundaryFileComponent {
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
+    public showMap:boolean = false;
 
     constructor(private boundaryFileService:BoundaryFileService,private loadMapService:LoadMapService, private router:Router) {
     }
 
     showModal(fileId:string){
+        this.showMap = true;
+        this.modal.show({inverted:true});
         this.loadMap(fileId);
-        console.log(1);
-        var modal = this.modal;
-        setTimeout(function () {
-            modal.show({inverted:true});
-        },1000)
     }
 
-    loadMap(fileId:string) {
-        // var query = this.router.url.split('/');
-        // var fileId = query[query.length - 1];
-        console.log("|" + fileId + "|");
+    loadMap(fileId:any) {
         this.boundaryFileService.fetchBoundaryFileById(fileId, (data:any) => {
             this.loadMapService.loadMap(JSON.parse(data));
         });
+    }
+
+    hideMap(){
+       this.showMap = false;
+        this.modal.hide();
     }
 }
