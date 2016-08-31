@@ -20,12 +20,8 @@ export class DashboardComponent {
 
     isBoundaryFileCompleted:boolean = false;
 
-    selectBoundaryFile(){
+    selectedBoundaryFile(fileId: string){
         this.isBoundaryFileCompleted = true;
-    }
-
-    selectDataFile(){
-       this.route.navigate(['data-files'])
     }
 
 }

@@ -1,4 +1,4 @@
-import {Component, ViewChild} from "@angular/core";
+import {Component, ViewChild, EventEmitter, Output} from "@angular/core";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
 import {Router, ROUTER_DIRECTIVES} from "@angular/router";
 import {LoadMapService} from "../../../../services/load-map.service";
@@ -7,23 +7,27 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 @Component({
     selector: 'preview-boundary-file',
     template: require('./preview-dashboard.component.jade'),
-    styles:[require('./preview-dashboard.component.scss')],
+    styles: [require('./preview-dashboard.component.scss')],
     providers: [BoundaryFileService, LoadMapService],
-    directives:[ROUTER_DIRECTIVES, SemanticModalComponent]
+    directives: [ROUTER_DIRECTIVES, SemanticModalComponent]
 })
 
 export class PreviewBoundaryFileComponent {
+    @Output() selectedBoundaryFile = new EventEmitter<string>();
+
+    private fileId: string;
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
     public showMap:boolean = false;
 
-    constructor(private boundaryFileService:BoundaryFileService,private loadMapService:LoadMapService, private router:Router) {
+    constructor(private boundaryFileService:BoundaryFileService, private loadMapService:LoadMapService, private router:Router) {
     }
 
-    showModal(fileId:string){
+    showModal(fileId:string) {
+        this.fileId = fileId;
         this.showMap = true;
-        this.modal.show({inverted:true});
+        this.modal.show({inverted: true});
         this.loadMap(fileId);
     }
 
@@ -33,8 +37,9 @@ export class PreviewBoundaryFileComponent {
         });
     }
 
-    hideMap(){
-       this.showMap = false;
+    confirmSelection() {
+        this.showMap = false;
         this.modal.hide();
+        this.selectedBoundaryFile.emit(this.fileId);
     }
 }

@@ -23,7 +23,6 @@ export class BoundaryFileService implements UploadService {
         data.append("tags", boundaryFile.tags.toString());
         var requestReference = this.request;
         this.request.onreadystatechange = function () {
-            console.log(requestReference.response);
             if (requestReference.status == 406) {
                 callback(false, "file is fail to upload");
             }

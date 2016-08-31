@@ -1,4 +1,4 @@
-import {Component, ViewChild, ChangeDetectionStrategy, Input} from "@angular/core";
+import {Component, ViewChild, ChangeDetectionStrategy, Input, EventEmitter, Output} from "@angular/core";
 import {BoundaryFileService} from "../../../services/boundary-file.service";
 import {UploadModalComponent} from "../common/upload_modal/upload-modal.component";
 import {LocalStorageService} from "../../../services/local.storage.service";
@@ -19,6 +19,8 @@ import {PreviewBoundaryFileComponent} from "./preview_boundary_file/preview-dash
 export class BoundaryFileDashBoardComponent {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
+
+    @Output() selectedFile = new EventEmitter<string>();
 
     @ViewChild(PreviewBoundaryFileComponent)
     previewBoundaryFileComponent:PreviewBoundaryFileComponent;
@@ -44,5 +46,9 @@ export class BoundaryFileDashBoardComponent {
     openWindow(event: any) {
         var fileId = event.path[1].cells[3].innerHTML;
         this.previewBoundaryFileComponent.showModal(fileId);
+    }
+
+    selectedBoundaryFile(fileId: string) {
+        this.selectedFile.emit(fileId);
     }
 }

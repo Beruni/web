@@ -6,7 +6,7 @@ import {PaginationService, PaginatePipe, PaginationControlsCmp} from "ng2-pagina
 import {SearchPipe} from "../../../pipes/search.pipe";
 
 @Component({
-    selector: 'view-uploaded-data-file',
+    selector: 'view-upload-data-file',
     template: require('./data-file-dashboard.component.jade'),
     directives: [UploadModalComponent, PaginationControlsCmp],
     styles:[require('./data-file-dashboard.component.scss')],
