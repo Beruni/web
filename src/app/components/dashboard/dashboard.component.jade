@@ -4,7 +4,7 @@
             .content
                 .title Select your boundary
                 .description Choose a GeoJson for Map
-        .step([ngClass]="{disabled: !isBoundaryFileCompleted, active:isBoundaryFileCompleted}")
+        .step([ngClass]="{disabled: !isBoundaryFileCompleted, active:isBoundaryFileCompleted, completed:isDataFileCompleted}")
             .content()
                 .title Select Data
                 .description Choose CSV Dataset
@@ -12,5 +12,5 @@
             .content
                 .title Visualize
                 .description This is what you looked for
-    view-upload-boundary-file(*ngIf='!isBoundaryFileCompleted', (selectedFile)='selectedBoundaryFile($event)')
+    view-upload-boundary-file(*ngIf='!isBoundaryFileCompleted', (selectedFileContent)='selectedBoundaryFile($event)')
     view-upload-data-file(*ngIf='isBoundaryFileCompleted')

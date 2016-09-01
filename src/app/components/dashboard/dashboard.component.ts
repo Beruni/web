@@ -16,15 +16,11 @@ export class DashboardComponent {
     isBoundaryFileCompleted:boolean = false;
     isDataFileCompleted:boolean = false;
 
-    constructor(private route:Router){
-
-    }
-
-    selectedBoundaryFile(fileId: string){
+    selectedBoundaryFile(selectedBoundaryFileContent: string){
         this.isBoundaryFileCompleted = true;
     }
 
-    selectedDataFile(fileId: string){
+    selectedDataFile(selectedDataFileContent: string){
         this.isDataFileCompleted = true;
     }
 }

@@ -20,7 +20,7 @@ export class BoundaryFileDashBoardComponent {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
 
-    @Output() selectedFile = new EventEmitter<string>();
+    @Output() selectedFileContent = new EventEmitter<string>();
 
     @ViewChild(PreviewBoundaryFileComponent)
     previewBoundaryFileComponent:PreviewBoundaryFileComponent;
@@ -48,7 +48,7 @@ export class BoundaryFileDashBoardComponent {
         this.previewBoundaryFileComponent.showModal(fileId);
     }
 
-    selectedBoundaryFile(fileId: string) {
-        this.selectedFile.emit(fileId);
+    selectedBoundaryFile(fileContent: string) {
+        this.selectedFileContent.emit(fileContent);
     }
 }

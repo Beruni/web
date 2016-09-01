@@ -12,7 +12,8 @@
                 th Uploaded date
                 th Tags
         tbody
-            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}')
+            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}',
+            (click)='openWindow($event)')
                 td {{file.title}}
                 td {{formattedDate(file.time)}}
                 td {{file.tags}}
@@ -24,3 +25,4 @@
     button.ui.secondary.button((click)='uploadModal.showModal()') Upload
     p
         upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')
+    preview-data-file
