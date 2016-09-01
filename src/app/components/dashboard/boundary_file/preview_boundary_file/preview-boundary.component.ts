@@ -1,6 +1,5 @@
 import {Component, ViewChild, EventEmitter, Output} from "@angular/core";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
-import {ROUTER_DIRECTIVES} from "@angular/router";
 import {LoadMapService} from "../../../../services/load-map.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 
@@ -9,10 +8,9 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
     template: require('./preview-boundary.component.jade'),
     styles: [require('./preview-boundary.component.scss')],
     providers: [BoundaryFileService, LoadMapService],
-    directives: [ROUTER_DIRECTIVES, SemanticModalComponent]
+    directives: [SemanticModalComponent]
 })
 
-// todo: Remove router
 export class PreviewBoundaryFileComponent {
     @Output() selectedBoundaryFile = new EventEmitter<string>();
 

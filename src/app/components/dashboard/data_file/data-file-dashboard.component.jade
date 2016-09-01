@@ -12,7 +12,7 @@
                 th Uploaded date
                 th Tags
         tbody
-            tr(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}',
+            tr.fileRow(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}',
             (click)='openWindow($event)')
                 td {{file.title}}
                 td {{formattedDate(file.time)}}
