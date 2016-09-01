@@ -4,7 +4,7 @@ import {DataFileService} from "../../../services/data-file.service";
 import {LocalStorageService} from "../../../services/local.storage.service";
 import {PaginationService, PaginatePipe, PaginationControlsCmp} from "ng2-pagination/index";
 import {SearchPipe} from "../../../pipes/search.pipe";
-import {PreviewBoundaryFileComponent} from "../boundary_file/preview_boundary_file/preview-dashboard.component";
+import {PreviewBoundaryFileComponent} from "../boundary_file/preview_boundary_file/preview-boundary.component";
 import {PreviewDataFileComponent} from "./preview_data_file/preview-data-file.component";
 
 @Component({

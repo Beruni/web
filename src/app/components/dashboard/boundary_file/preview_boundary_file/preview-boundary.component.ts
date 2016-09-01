@@ -6,8 +6,8 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 
 @Component({
     selector: 'preview-boundary-file',
-    template: require('./preview-dashboard.component.jade'),
-    styles: [require('./preview-dashboard.component.scss')],
+    template: require('./preview-boundary.component.jade'),
+    styles: [require('./preview-boundary.component.scss')],
     providers: [BoundaryFileService, LoadMapService],
     directives: [ROUTER_DIRECTIVES, SemanticModalComponent]
 })
