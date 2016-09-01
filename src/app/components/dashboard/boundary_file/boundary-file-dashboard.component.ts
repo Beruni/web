@@ -43,7 +43,7 @@ export class BoundaryFileDashBoardComponent {
         return datString.split(' ').slice(0, 4).join(' ');
     }
 
-    openWindow(event: any) {
+    showModal(event: any) {
         var fileId = event.path[1].cells[3].innerHTML;
         this.previewBoundaryFileComponent.showModal(fileId);
     }

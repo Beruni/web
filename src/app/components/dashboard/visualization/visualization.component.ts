@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 @Component({
-    selector:'map-visualization',
+    selector:'visualization',
     template:require('./visualization.component.jade')
 })
 

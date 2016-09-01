@@ -1,5 +1,6 @@
 import {Component, ViewChild, EventEmitter, Output} from "@angular/core";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
+import {DataFileService} from "../../../../services/data-file.service";
 
 @Component({
     selector: 'preview-data-file',
@@ -11,15 +12,20 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 export class PreviewDataFileComponent {
     @Output() selectedDataFile = new EventEmitter<string>();
 
-    private fileContent: string;
-
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
 
-    showModal(fileId:string) {
-        this.modal.show({inverted: true});
+    private fileContent: string;
+
+    constructor(private dataFileService:DataFileService) {
     }
 
+    showModal(fileId:string) {
+        this.modal.show({inverted: true});
+        this.dataFileService.fetchDataFileById(fileId,(data:any) =>{
+            this.fileContent = data;
+        })
+    }
 
     confirmSelection() {
         this.modal.hide();

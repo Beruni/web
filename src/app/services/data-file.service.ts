@@ -53,14 +53,22 @@ export class DataFileService implements UploadService {
         return this;
     }
 
-    fetchDataFiles(callback:any) {
+    headers() {
         let headers = new Headers({
             'Content-Type': 'application/json',
             'Authorization': this.token
         });
-        let options = new RequestOptions({headers: headers});
+        return new RequestOptions({headers: headers});
+    }
 
-        this.http.get(DataFileService.BASE_URL + "/fetchFiles", options)
+    fetchDataFiles(callback:any) {
+        this.http.get(DataFileService.BASE_URL + "/fetchFiles", this.headers())
+            .map(res => res.json())
+            .subscribe(data => callback(data));
+    }
+
+    fetchDataFileById(fileId:string, callback:any) {
+        this.http.get(DataFileService.BASE_URL + "/fetchFile/" + fileId, this.headers())
             .map(res => res.json())
             .subscribe(data => callback(data));
     }

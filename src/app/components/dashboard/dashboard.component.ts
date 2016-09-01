@@ -9,18 +9,22 @@ import {Visualization} from "./visualization/visualization.component";
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent, Visualization, HomeComponent, ROUTER_DIRECTIVES]
+    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent,Visualization, HomeComponent]
 })
 
 export class DashboardComponent {
     isBoundaryFileCompleted:boolean = false;
     isDataFileCompleted:boolean = false;
+    private selectedBoundaryFileContent:string;
+    private selectedDataFileContent:string;
 
     selectedBoundaryFile(selectedBoundaryFileContent: string){
+        this.selectedBoundaryFileContent = selectedBoundaryFileContent;
         this.isBoundaryFileCompleted = true;
     }
 
     selectedDataFile(selectedDataFileContent: string){
+        this.selectedDataFileContent = selectedDataFileContent;
         this.isDataFileCompleted = true;
     }
 }
