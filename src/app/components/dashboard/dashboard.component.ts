@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {BoundaryFileDashBoardComponent} from "./boundary_file/boundary-file-dashboard.component";
 import {DataFileDashboardComponent} from "./data_file/data-file-dashboard.component";
 import {HomeComponent} from "../home/home.component";

@@ -29,6 +29,6 @@ export class Visualization{
                 })
             })
         });
-        this.loadMapService.loadMap(boundary);
+        this.loadMapService.plotChoropleth(boundary);
     }
 }
