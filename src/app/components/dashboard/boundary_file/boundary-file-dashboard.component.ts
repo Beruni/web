@@ -20,12 +20,12 @@ export class BoundaryFileDashBoardComponent {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
 
+    @Input('boundary_files') files:JSON;
+
     @Output() selectedFileContent = new EventEmitter<string>();
 
     @ViewChild(PreviewBoundaryFileComponent)
     previewBoundaryFileComponent:PreviewBoundaryFileComponent;
-
-    @Input('data') files:JSON = null;
 
     constructor(private boundaryFileService:BoundaryFileService) {
 
@@ -33,9 +33,6 @@ export class BoundaryFileDashBoardComponent {
 
     ngOnInit() {
         this.uploadModal.uploadService = this.boundaryFileService;
-        this.boundaryFileService.fetchBoundaryFiles((data:JSON) => {
-            this.files = data;
-        })
     }
 
     formattedDate(date:string) {

@@ -22,16 +22,13 @@ export class DataFileDashboardComponent implements OnInit {
     @ViewChild(UploadModalComponent)
     uploadModal:UploadModalComponent;
 
-    @Input('data') files:JSON = null;
+    @Input('data_files') files:JSON;
     @Output() selectedFileContent = new EventEmitter<string>();
 
     constructor(private dataFileService:DataFileService) { }
 
     ngOnInit() {
         this.uploadModal.uploadService = this.dataFileService;
-        this.dataFileService.fetchDataFiles((data:JSON) => {
-            this.files = data;
-        })
     }
 
     formattedDate(date:string) {
