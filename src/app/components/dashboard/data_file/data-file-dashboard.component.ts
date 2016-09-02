@@ -24,6 +24,7 @@ export class DataFileDashboardComponent implements OnInit {
 
     @Input('data_files') files:JSON;
     @Output() selectedFileContent = new EventEmitter<string>();
+    private fileContent:string;
 
     constructor(private dataFileService:DataFileService) { }
 
@@ -38,10 +39,13 @@ export class DataFileDashboardComponent implements OnInit {
 
     showModal(event: any) {
         var fileId = event.path[1].cells[3].innerHTML;
-        this.previewDataFileComponent.showModal(fileId);
+        this.dataFileService.fetchDataFileById(fileId, (data:any) => {
+            this.fileContent = data;
+            this.previewDataFileComponent.showModal();
+        });
     }
 
-    selectedDataFile(fileContent: string) {
-        this.selectedFileContent.emit(fileContent);
+    selectedDataFile() {
+        this.selectedFileContent.emit(this.fileContent);
     }
 }

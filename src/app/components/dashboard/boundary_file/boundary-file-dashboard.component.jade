@@ -13,7 +13,7 @@
                 th Tags
         tbody
             tr.fileRow(*ngFor='let file of files | search: searchString | paginate: { itemsPerPage: 4, currentPage: page}',
-            (click)='showModal($event)')
+            (click)='showModal($event)',)
                 td {{file.title}}
                 td {{formattedDate(file.time)}}
                 td {{file.tags}}
@@ -25,4 +25,4 @@
     button.ui.secondary.button((click)='uploadModal.showModal()') Upload
     p
         upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
-    preview-boundary-file((selectedBoundaryFile)='selectedBoundaryFile($event)')
+    preview-boundary-file((confirmation)='selectedBoundaryFile($event)')

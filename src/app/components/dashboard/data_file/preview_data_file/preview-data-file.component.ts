@@ -10,29 +10,23 @@ import {DataFileService} from "../../../../services/data-file.service";
 })
 
 export class PreviewDataFileComponent {
-    @Output() selectedDataFile = new EventEmitter<string>();
+
+    @Output() confirmation = new EventEmitter<boolean>();
 
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
 
-    private fileContent: string;
-
-    constructor(private dataFileService:DataFileService) {
-    }
-
-    showModal(fileId:string) {
+    showModal() {
         this.modal.show({inverted: true});
-        this.dataFileService.fetchDataFileById(fileId,(data:any) =>{
-            this.fileContent = data;
-        })
     }
 
     confirmSelection() {
         this.modal.hide();
-        this.selectedDataFile.emit(this.fileContent);
+        this.confirmation.emit(true);
     }
 
     hideModal() {
         this.modal.hide();
+        this.confirmation.emit(true);
     }
 }

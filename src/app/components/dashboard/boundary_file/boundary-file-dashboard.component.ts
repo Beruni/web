@@ -27,6 +27,8 @@ export class BoundaryFileDashBoardComponent {
     @ViewChild(PreviewBoundaryFileComponent)
     previewBoundaryFileComponent:PreviewBoundaryFileComponent;
 
+    private fileContent:string;
+
     constructor(private boundaryFileService:BoundaryFileService) {
 
     }
@@ -42,10 +44,13 @@ export class BoundaryFileDashBoardComponent {
 
     showModal(event: any) {
         var fileId = event.path[1].cells[3].innerHTML;
-        this.previewBoundaryFileComponent.showModal(fileId);
+        this.boundaryFileService.fetchBoundaryFileById(fileId, (data:any) => {
+            this.fileContent = data;
+            this.previewBoundaryFileComponent.showModal(this.fileContent);
+        });
     }
 
-    selectedBoundaryFile(fileContent: string) {
-        this.selectedFileContent.emit(fileContent);
+    selectedBoundaryFile() {
+        this.selectedFileContent.emit(this.fileContent);
     }
 }

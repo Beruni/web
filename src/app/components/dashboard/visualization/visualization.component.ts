@@ -10,6 +10,7 @@ import * as _ from "lodash";
 })
 
 export class Visualization{
+
     constructor(private loadMapService:LoadMapService){}
 
     plotChoropleth(selectedBoundaryFileContent:string, selectedDataFileContent:string) {

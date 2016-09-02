@@ -25,4 +25,4 @@
     button.ui.secondary.button((click)='uploadModal.showModal()') Upload
     p
         upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')
-    preview-data-file((selectedDataFile)='selectedDataFile($event)')
+    preview-data-file((confirmation)='selectedDataFile()')
