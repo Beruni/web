@@ -14,4 +14,4 @@
                 .description This is what you looked for
     view-upload-boundary-file(*ngIf='!isBoundaryFileCompleted', (selectedFileContent)='selectedBoundaryFile($event)')
     view-upload-data-file(*ngIf='isBoundaryFileCompleted && !isDataFileCompleted', (selectedFileContent)='selectedDataFile($event)')
-    visualization(*ngIf='isBoundaryFileCompleted && isDataFileCompleted')
+    visualization

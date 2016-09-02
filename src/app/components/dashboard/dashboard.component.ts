@@ -1,15 +1,14 @@
-import {Component} from "@angular/core";
+import {Component, ViewChild} from "@angular/core";
 import {BoundaryFileDashBoardComponent} from "./boundary_file/boundary-file-dashboard.component";
 import {DataFileDashboardComponent} from "./data_file/data-file-dashboard.component";
 import {HomeComponent} from "../home/home.component";
-import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {Visualization} from "./visualization/visualization.component";
 
 @Component({
     selector: 'dashboard',
     template: require('./dashboard.component.jade'),
     styles: [require('./dashboard.component.scss')],
-    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent,Visualization, HomeComponent]
+    directives: [BoundaryFileDashBoardComponent, DataFileDashboardComponent, Visualization, HomeComponent]
 })
 
 export class DashboardComponent {
@@ -18,13 +17,21 @@ export class DashboardComponent {
     private selectedBoundaryFileContent:string;
     private selectedDataFileContent:string;
 
-    selectedBoundaryFile(selectedBoundaryFileContent: string){
-        this.selectedBoundaryFileContent = selectedBoundaryFileContent;
+    @ViewChild(Visualization)
+    visualization:Visualization;
+
+    selectedBoundaryFile(selectedFileContent:string) {
+        this.selectedBoundaryFileContent = selectedFileContent;
         this.isBoundaryFileCompleted = true;
     }
 
-    selectedDataFile(selectedDataFileContent: string){
-        this.selectedDataFileContent = selectedDataFileContent;
+    selectedDataFile(selectedFileContent:string) {
+        this.selectedDataFileContent = selectedFileContent;
         this.isDataFileCompleted = true;
+        this.plotChoropleth();
+    }
+
+    private plotChoropleth() {
+        this.visualization.plotChoropleth(this.selectedBoundaryFileContent, this.selectedDataFileContent);
     }
 }
