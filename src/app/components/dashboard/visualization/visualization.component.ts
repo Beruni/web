@@ -20,11 +20,12 @@ export class Visualization{
 
         _.forEach(data,function (featureData:any) {
             var location = _.valuesIn(featureData)[0];
-            var density = _.valuesIn(featureData)[1];
+            var dataColumn = _.valuesIn(featureData)[1];
+
             _.forEach(features,function(feature){
                 _.mapValues(feature.properties,function(value){
                     if(value == location){
-                        feature.properties['density'] = density;
+                        feature.properties['data'] = dataColumn;
                     }
                 })
             })

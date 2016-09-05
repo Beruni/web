@@ -33,8 +33,8 @@ export class DataFileDashboardComponent implements OnInit {
     }
 
     formattedDate(date:string) {
-        var datString = new Date(date).toDateString();
-        return datString.split(' ').slice(0, 4).join(' ');
+        var dateString = new Date(date).toDateString();
+        return dateString.split(' ').slice(0, 4).join(' ');
     }
 
     showModal(event: any) {

@@ -1,11 +1,20 @@
 import * as L from "leaflet";
 
 export class LoadMapService{
+    static getColor(d:any) {
+        return d > 1000 ? '#800026' :
+            d > 500  ? '#BD0026' :
+                d > 200  ? '#E31A1C' :
+                    d > 100  ? '#FC4E2A' :
+                        d > 50   ? '#FD8D3C' :
+                            d > 20   ? '#FEB24C' :
+                                d > 10   ? '#FED976' :
+                                    '#FFEDA0';
+    }
 
     style(feature:any){
-        // TODO: need to implement getcolor method for color according density
         return {
-            fillColor: '#800026',
+            fillColor: LoadMapService.getColor(feature.properties.data),
             weight: 2,
             opacity: 1,
             color: 'white',
