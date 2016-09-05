@@ -33,4 +33,5 @@ export class PreviewBoundaryFileComponent {
         this.modal.hide();
         this.confirmation.emit(true);
     }
+
 }

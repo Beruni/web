@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FbLoginComponent } from '../login/fblogin.component';
-import { FbLogoutComponent } from '../login/fblogout.component';
-import { LocalStorageService } from '../../services/local.storage.service';
-import { JwtHelper } from 'angular2-jwt';
+import {Component} from "@angular/core";
+import {FbLoginComponent} from "../login/fblogin.component";
+import {FbLogoutComponent} from "../login/fblogout.component";
+import {LocalStorageService} from "../../services/local.storage.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,9 +14,13 @@ import { JwtHelper } from 'angular2-jwt';
 
 export class HeaderComponent {
 	
-	constructor(private localStorageService : LocalStorageService){}
+	constructor(private localStorageService : LocalStorageService, private router:Router){}
 
 	isTokenExpired(){
 		return this.localStorageService.isTokenExpired();
+	}
+
+	goToHome(){
+		this.router.navigate(['']);
 	}
 }
