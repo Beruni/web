@@ -83,12 +83,13 @@ export class UploadModalComponent {
     }
 
     selectedFile(event:any) {
+        var mapId = this.mapId;
         var loadMapService = this.loadMapService;
         this.file = event.target.files[0];
         var fileReader = new FileReader();
         fileReader.readAsText(this.file);
         fileReader.onload = function (e) {
-            loadMapService.loadMap(JSON.parse(fileReader.result), this.mapId)
+            loadMapService.loadMap(JSON.parse(fileReader.result), mapId)
         }
     }
 }
