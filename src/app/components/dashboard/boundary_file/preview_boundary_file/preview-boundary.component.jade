@@ -1,4 +1,4 @@
 sm-modal
     modal-content
-        .previewMap#map(*ngIf="showMap")
+        .previewMap(id="{{mapId}}")
         button.ui.primary.button((click)="confirmSelection()") Confirm

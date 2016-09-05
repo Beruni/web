@@ -13,26 +13,24 @@ import {SemanticModalComponent} from "ng-semantic/ng-semantic";
 export class PreviewBoundaryFileComponent {
     @ViewChild(SemanticModalComponent)
     private modal:SemanticModalComponent;
-    public showMap:boolean = true;
     @Output() confirmation = new EventEmitter<boolean>();
+    public mapId:string = 'previewMap';
 
     constructor(private loadMapService:LoadMapService) {
     }
 
-    showModal(fileContent: string) {
-        this.showMap = true;
+    showModal(fileContent:string) {
         this.modal.show({inverted: true});
         this.loadMap(fileContent);
     }
 
 
-    loadMap(fileContent: string) {
-        this.loadMapService.loadMap(JSON.parse(fileContent));
+    loadMap(fileContent:string) {
+        this.loadMapService.loadMap(JSON.parse(fileContent), this.mapId);
     }
 
     confirmSelection() {
         this.modal.hide();
-        this.showMap = false;
         this.confirmation.emit(true);
     }
 }

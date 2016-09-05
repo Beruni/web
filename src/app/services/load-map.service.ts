@@ -24,18 +24,18 @@ export class LoadMapService{
     }
 
 
-    loadMap(data:JSON){
+    loadMap(data:JSON, mapId:string = 'map'){
         var layer = L.geoJson(data);
         var center = layer.getBounds().getCenter();
-        var map = L.map('map').setView(center).fitBounds(layer.getBounds());
+        var map = L.map(mapId).setView(center).fitBounds(layer.getBounds());
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         layer.addTo(map);
     }
 
-    plotChoropleth(data:JSON) {
+    plotChoropleth(data:JSON, mapId:string = 'map') {
         var layer = L.geoJson(data, { style: this.style });
         var center = layer.getBounds().getCenter();
-        var map = L.map('map').setView(center).fitBounds(layer.getBounds());
+        var map = L.map(mapId).setView(center).fitBounds(layer.getBounds());
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         layer.addTo(map);
     }

@@ -10,6 +10,7 @@ import * as _ from "lodash";
 })
 
 export class Visualization{
+    public mapId:string = 'visualizationMap';
 
     constructor(private loadMapService:LoadMapService){}
 
@@ -30,6 +31,6 @@ export class Visualization{
                 })
             })
         });
-        this.loadMapService.plotChoropleth(boundary);
+        this.loadMapService.plotChoropleth(boundary,this.mapId);
     }
 }

@@ -35,10 +35,9 @@ export class UploadModalComponent {
     public uploadService:UploadService;
     public successfullyUploaded:boolean;
     public showMessage:string;
-    public showMap:boolean = false;
+    public mapId:string = 'uploadMap';
 
     showModal() {
-        this.showMap = true;
         this.modal.show({inverted: true})
     }
 
@@ -69,7 +68,6 @@ export class UploadModalComponent {
     }
 
     hideModal() {
-        this.showMap = false;
         this.modal.hide()
     }
 
@@ -90,7 +88,7 @@ export class UploadModalComponent {
         var fileReader = new FileReader();
         fileReader.readAsText(this.file);
         fileReader.onload = function (e) {
-            loadMapService.loadMap(JSON.parse(fileReader.result))
+            loadMapService.loadMap(JSON.parse(fileReader.result), this.mapId)
         }
     }
 }
