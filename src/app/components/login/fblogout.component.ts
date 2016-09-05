@@ -15,6 +15,6 @@ export class FbLogoutComponent {
     
     logout(){
         this.localStorageService.deleteToken();
-        this.router.navigate(['home'])
+        this.router.navigate([''])
     }
 }

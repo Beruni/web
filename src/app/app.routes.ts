@@ -9,13 +9,16 @@ import {DataFileDashboardComponent} from "./components/dashboard/data_file/data-
 
 const routes: RouterConfig = [
     {
-        path:'',
+        path: '',
+        component: HomeComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: '',
         canActivate: [AuthGuard],
         children: [
-            {path: '', component: HomeComponent},
-            {path: 'home', component: HomeComponent},
-            {path: 'preview-boundary-file/:fileId', component: PreviewBoundaryFileComponent},
             {path: 'dashboard', component: DashboardComponent},
+            {path: 'preview-boundary-file/:fileId', component: PreviewBoundaryFileComponent},
             {path: 'boundary-files', component: BoundaryFileDashBoardComponent},
             {path: 'data-files', component: DataFileDashboardComponent}
         ]
