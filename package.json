@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080 --host 0.0.0.0",
+    "lint": "tslint \"src/**/*.ts\"",
     "test": "karma start",
     "build": "echo 'Running build....' && npm install && rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
     "postinstall": "rimraf typings && typings install",
@@ -62,6 +63,8 @@
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1",
     "webpack-merge": "0.14.0",
-    "angular2-hmr": "0.8.0"
+    "angular2-hmr": "0.8.0",
+    "tslint": "3.11.0",
+    "codelyzer": "0.0.20"
   }
 }
