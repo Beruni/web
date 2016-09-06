@@ -53,4 +53,9 @@ export class BoundaryFileDashBoardComponent {
     selectedBoundaryFile() {
         this.selectedFileContent.emit(this.fileContent);
     }
+
+    currentBoundaryFile(fileContent:string){
+        this.selectedFileContent.emit(fileContent)
+    }
+
 }

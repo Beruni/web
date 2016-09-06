@@ -23,6 +23,17 @@ export class LoadMapService{
         };
     }
 
+    isGeoJson(data:JSON, callback:Function){
+
+        try{
+            var layer = L.geoJson(data);
+            callback(true);
+        }
+        catch(error){
+            callback(false);
+        }
+    }
+
 
     loadMap(data:JSON, mapId:string = 'map'):void{
         var layer = L.geoJson(data);

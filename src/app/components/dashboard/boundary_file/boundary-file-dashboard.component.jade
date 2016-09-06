@@ -23,5 +23,5 @@
                 th(colspan='3', style="text-align:right")
                     pagination-controls((pageChange)='page = $event')
     button.ui.secondary.button((click)='uploadModal.showModal()') Upload New Boundary file
-    upload-modal([title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
+    upload-modal((chooseFileContent)='currentBoundaryFile($event)',[title]="'Upload Boundary File'", [uploadFilePlaceholder]="'Boundary file title'", [supportedFormats]="'GeoJSON'", [formats]="'.json'", #uploadModal='')
     preview-boundary-file((confirmation)='selectedBoundaryFile($event)')

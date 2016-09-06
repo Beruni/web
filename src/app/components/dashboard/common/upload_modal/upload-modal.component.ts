@@ -1,4 +1,4 @@
-import {Component, ViewChild, Input, Injectable} from "@angular/core";
+import {Component, ViewChild, Input, Injectable, EventEmitter, Output} from "@angular/core";
 import {TagsInputComponent} from "../tags/tags.component";
 import {DataFileService} from "../../../../services/data-file.service";
 import {SemanticModalComponent} from "ng-semantic/ng-semantic";
@@ -27,69 +27,35 @@ export class UploadModalComponent {
   @Input() title: String;
   @Input() uploadFilePlaceholder: String;
   @Input() formats: String;
-  @Input() supportedFormats: String;
-
-  public tags: String[] = [];
-  public name: String = '';
-  public file: File;
-  public uploadService: UploadService;
-  public successfullyUploaded: boolean;
-  public showMessage: string;
-  public mapId: string = 'uploadMap';
+  @Input() supportedFormats:String;
+  @Output() chooseFileContent = new EventEmitter<string>();
+  public tags:String[] = [];
+  public name:String = '';
+  public file:File;
+  public uploadService:UploadService;
+  public mapId:string = 'uploadMap';
+  public showMap:boolean = false;
+  public fileContent:string;
 
   showModal() {
     this.modal.show({inverted: true})
   }
 
-  ngOnInit() {
-    this.hideCompletionToast()
-  }
 
-  showCompletionToast(isSuccessful: boolean, message: string) {
-    this.successfullyUploaded = isSuccessful;
-    this.showMessage = message;
-    var element = document.getElementById("completion-toast");
-    element.style.display = "block";
-    $('#completion-toast').delay(3000).hide(50);
-    $('#container').delay(3000).hide(50);
-  }
-
-  private hideCompletionToast() {
-    document.getElementById("completion-toast").style.display = "none";
-  }
-
-  setClasses() {
-    var setColor = {};
-    if (this.successfullyUploaded)
-      setColor = {green: true};
-    else
-      setColor = {red: true};
-    return setColor
-  }
-
-  hideModal() {
-    this.modal.hide()
-  }
-
-  uploadSelectedFile() {
-    var classReference = this;
-    if (this.file) {
-      var file = new UploadableFile(this.name, this.file, this.tags);
-      this.uploadService.init().attachListener("progress", this.progressListener)
-          .upload(file, function (isSuccessFull: boolean, message: string) {
-            classReference.showCompletionToast(isSuccessFull, message);
-          });
+    hideModal() {
+        this.modal.hide()
+        this.showMap = false;
     }
-  }
 
-  selectedFile(event: any) {
-    var mapId = this.mapId;
-    var loadMapService = this.loadMapService;
-    this.file = event.target.files[0];
-    var fileReader = new FileReader();
-    fileReader.readAsText(this.file);
-    fileReader.onload = function (e) {
-      loadMapService.loadMap(JSON.parse(fileReader.result), mapId);
+    uploadSelectedFile() {
+        var classReference = this;
+        if (this.file) {
+            var file = new UploadableFile(this.name, this.file, this.tags);
+            this.uploadService.init().attachListener("progress", this.progressListener)
+                .upload(file, function (isSuccessFull:boolean, message:string) {
+                    classReference.chooseFileContent.emit(classReference.fileContent);
+                    classReference.hideModal();
+                });
+        }
     }
-  }
 }
