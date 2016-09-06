@@ -1,17 +1,20 @@
 import {Injectable} from "@angular/core";
 import {Headers, Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-
+import {NodeDiscoveryService} from "./discovery.service";
 
 @Injectable()
 export class UserService {
-
-    constructor(private http: Http) { }
+    private baseUrl: string
+    
+    constructor(private http: Http, private nodeDiscoveryService:NodeDiscoveryService) { 
+      let serviceParams = nodeDiscoveryService.serviceParams('user_service')
+      this.baseUrl = '//' + serviceParams['ServiceAddress'] + ':' + serviceParams['ServicePort'];
+    }
 
     login(data:any): Promise<any> {
-        console.log('avout to send to backend');
         let headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://127.0.0.1:3001/authorize', JSON.stringify(data), {headers:headers})
+        return this.http.post(this.baseUrl + '/authorize', JSON.stringify(data), {headers:headers})
             .toPromise();
     }
 }

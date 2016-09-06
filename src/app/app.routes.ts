@@ -3,6 +3,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth-guard-activate.service";
 import {LocalStorageService} from "./services/local.storage.service";
+import {NodeDiscoveryService} from "./services/discovery.service";
 import {PreviewBoundaryFileComponent} from "./components/dashboard/boundary_file/preview_boundary_file/preview-boundary.component";
 import {BoundaryFileDashBoardComponent} from "./components/dashboard/boundary_file/boundary-file-dashboard.component";
 import {DataFileDashboardComponent} from "./components/dashboard/data_file/data-file-dashboard.component";
@@ -26,5 +27,5 @@ const routes: RouterConfig = [
 ];
 
 export const appRouterProviders = [
-    provideRouter(routes), AuthGuard, LocalStorageService
+    provideRouter(routes), AuthGuard, LocalStorageService, NodeDiscoveryService
 ];

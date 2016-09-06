@@ -4,16 +4,18 @@ import {UploadService} from "./upload-interface";
 import {UploadableFile} from "../components/dashboard/data_file/uploadable-file";
 import {Http, Headers, RequestOptions} from "@angular/http";
 import {LocalStorageService} from "./local.storage.service";
+import {NodeDiscoveryService} from "./discovery.service";
 
 @Injectable()
 export class DataFileService implements UploadService {
-    //TODO: move it to a separate constant file/class.
-    private static BASE_URL:string = 'http://127.0.0.1:3002';
+    private baseUrl:string;
     private token:string;
     private request:XMLHttpRequest;
 
-    constructor(private http:Http, private localStorageService:LocalStorageService) {
+    constructor(private http:Http, private localStorageService:LocalStorageService, private nodeDiscoveryService:NodeDiscoveryService) {
         this.token = this.localStorageService.getUserToken();
+        let serviceParams = nodeDiscoveryService.serviceParams('data_service')
+        this.baseUrl = '//' + serviceParams['ServiceAddress'] + ':' + serviceParams['ServicePort'];
     }
 
     upload(dataFile:UploadableFile, callback:Function):any {
@@ -43,7 +45,7 @@ export class DataFileService implements UploadService {
 
     init():UploadService {
         this.request = new XMLHttpRequest();
-        this.request.open("POST", DataFileService.BASE_URL + "/upload/");
+        this.request.open("POST", this.baseUrl + "/upload/");
         this.request.setRequestHeader("authorization", this.token);
         return this;
     }
@@ -62,13 +64,13 @@ export class DataFileService implements UploadService {
     }
 
     fetchDataFiles(callback:any) {
-        this.http.get(DataFileService.BASE_URL + "/fetchFiles", this.headers())
+        this.http.get(this.baseUrl + "/fetchFiles", this.headers())
             .map(res => res.json())
             .subscribe(data => callback(data));
     }
 
     fetchDataFileById(fileId:string, callback:any) {
-        this.http.get(DataFileService.BASE_URL + "/fetchFile/" + fileId, this.headers())
+        this.http.get(this.baseUrl + "/fetchFile/" + fileId, this.headers())
             .map(res => res.json())
             .subscribe(data => callback(data));
     }

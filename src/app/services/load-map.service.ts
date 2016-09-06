@@ -28,7 +28,7 @@ export class LoadMapService{
         var layer = L.geoJson(data);
         var center = layer.getBounds().getCenter();
         var map = L.map(mapId).setView(center).fitBounds(layer.getBounds());
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         layer.addTo(map);
     }
 
@@ -37,7 +37,7 @@ export class LoadMapService{
         var layer = L.geoJson(data, {style: this.style});
         var center = layer.getBounds().getCenter();
         var map = L.map(mapId).setView(center).fitBounds(layer.getBounds());
-        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
         layer.addTo(map);
         map.addControl(new InfoControlComponent.InfoControl());
     }

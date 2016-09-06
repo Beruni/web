@@ -4,7 +4,6 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { AppComponent } from './app/app.component';
 import { appRouterProviders } from './app/app.routes';
 
-
 if (process.env.ENV === 'production') {
   enableProdMode();
 }
