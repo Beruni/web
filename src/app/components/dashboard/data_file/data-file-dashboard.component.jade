@@ -22,7 +22,7 @@
             tr
                 th(colspan='3', style="text-align:right")
                     pagination-controls((pageChange)='page = $event')
-    button.ui.secondary.button((click)='uploadModal.showModal()') Upload
+    button.ui.secondary.button((click)='uploadModal.showModal()') Upload New Data file
     p
         upload-modal([title]="'Upload Data File'", [uploadFilePlaceholder]="'Data file title'", [supportedFormats]="CSV", [formats]="'.csv'", #uploadModal='')
     preview-data-file((confirmation)='selectedDataFile()')

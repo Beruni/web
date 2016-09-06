@@ -27,8 +27,8 @@ export class UploadModalComponent {
   @Input() title: String;
   @Input() uploadFilePlaceholder: String;
   @Input() formats: String;
-
   @Input() supportedFormats: String;
+
   public tags: String[] = [];
   public name: String = '';
   public file: File;
