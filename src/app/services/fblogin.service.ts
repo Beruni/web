@@ -20,7 +20,7 @@ export class FacebookLoginService {
 
     fbAsyncInit() {
         FB.init({
-            appId: '486249311585045',
+            appId: '509842172559092',
             cookie: true,  // enable cookies to allow the server to access
             // the session
             xfbml: true,  // parse social plugins on this page

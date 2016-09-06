@@ -77,7 +77,7 @@ export class UploadModalComponent {
             var file = new UploadableFile(this.name, this.file, this.tags);
             this.uploadService.init().attachListener("progress", this.progressListener)
                 .upload(file, function (isSuccessFull:boolean, message:string) {
-                    classReference.showCompletionToast(isSuccessFull, message)
+                    classReference.showCompletionToast(isSuccessFull, message);
                 });
         }
     }
@@ -89,7 +89,7 @@ export class UploadModalComponent {
         var fileReader = new FileReader();
         fileReader.readAsText(this.file);
         fileReader.onload = function (e) {
-            loadMapService.loadMap(JSON.parse(fileReader.result), mapId)
+            loadMapService.loadMap(JSON.parse(fileReader.result), mapId);
         }
     }
 }
