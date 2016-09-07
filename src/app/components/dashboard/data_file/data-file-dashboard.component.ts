@@ -5,6 +5,7 @@ import {LocalStorageService} from "../../../services/local.storage.service";
 import {PaginationService, PaginatePipe, PaginationControlsCmp} from "ng2-pagination/index";
 import {SearchPipe} from "../../../pipes/search.pipe";
 import {PreviewDataFileComponent} from "./preview_data_file/preview-data-file.component";
+// import {Converter} from "csvtojson";
 
 @Component({
     selector: 'view-upload-data-file',
@@ -25,11 +26,12 @@ export class DataFileDashboardComponent implements OnInit {
     @Input('data_files') files:JSON;
     @Output() selectedFileContent = new EventEmitter<string>();
     private fileContent:string;
-
+    public selectionOfDataFile: Function;
     constructor(private dataFileService:DataFileService) { }
 
     ngOnInit() {
         this.uploadModal.uploadService = this.dataFileService;
+        this.selectionOfDataFile = this.onDataFileSelection.bind(this)
     }
 
     formattedDate(date:string) {
@@ -48,4 +50,19 @@ export class DataFileDashboardComponent implements OnInit {
     selectedDataFile() {
         this.selectedFileContent.emit(this.fileContent);
     }
+
+    currentDataFile(fileContent:string){
+        this.selectedFileContent.emit(fileContent)
+    }
+
+    onDataFileSelection(event:any){
+        this.uploadModal.file = event.target.files[0];
+        console.log(event.target.files[0]);
+        // var classReference = this;
+        // fileReader.onload = function (e) {
+        //     classReference.uploadModal.fileContent = fileReader.result;
+        //     classReference.uploadModal.uplaodableFile = true;
+        // }
+    }
+
 }

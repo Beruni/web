@@ -6,24 +6,24 @@ import {UploadableFile} from "../../data_file/uploadable-file";
 import {UploadService} from "../../../../services/upload-interface";
 import {BoundaryFileService} from "../../../../services/boundary-file.service";
 import {ProgressListener} from "../listeners/progress-listener";
-import {LoadMapService} from "../../../../services/load-map.service";
+
 @Component({
   selector: 'upload-modal',
   template: require('./upload-modal.component.jade'),
   styles: [require('./upload-modal.component.scss')],
   directives: [TagsInputComponent, SemanticModalComponent],
-  providers: [DataFileService, BoundaryFileService, ProgressListener, LoadMapService]
+  providers: [DataFileService, BoundaryFileService, ProgressListener]
 })
 
 @Injectable()
 export class UploadModalComponent {
 
-  constructor(private progressListener: ProgressListener, private loadMapService: LoadMapService) {
+  constructor(private progressListener: ProgressListener) {
   }
 
   @ViewChild(SemanticModalComponent)
   private modal: SemanticModalComponent;
-
+  @Input() public selectedFile: Function;
   @Input() title: String;
   @Input() uploadFilePlaceholder: String;
   @Input() formats: String;
@@ -33,9 +33,10 @@ export class UploadModalComponent {
   public name:String = '';
   public file:File;
   public uploadService:UploadService;
-  public mapId:string = 'uploadMap';
   public showMap:boolean = false;
   public fileContent:string;
+  public mapId:string = 'uploadMap';
+  public uplaodableFile:boolean;
 
   showModal() {
     this.modal.show({inverted: true})
@@ -49,7 +50,7 @@ export class UploadModalComponent {
 
     uploadSelectedFile() {
         var classReference = this;
-        if (this.file) {
+        if (this.file && this.uplaodableFile) {
             var file = new UploadableFile(this.name, this.file, this.tags);
             this.uploadService.init().attachListener("progress", this.progressListener)
                 .upload(file, function (isSuccessFull:boolean, message:string) {
