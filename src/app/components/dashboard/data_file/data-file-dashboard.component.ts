@@ -57,12 +57,27 @@ export class DataFileDashboardComponent implements OnInit {
 
     onDataFileSelection(event:any){
         this.uploadModal.file = event.target.files[0];
-        console.log(event.target.files[0]);
-        // var classReference = this;
-        // fileReader.onload = function (e) {
-        //     classReference.uploadModal.fileContent = fileReader.result;
-        //     classReference.uploadModal.uplaodableFile = true;
-        // }
+        var fileReader = new FileReader();
+        fileReader.readAsText(this.uploadModal.file);
+        var classReference = this;
+        fileReader.onload = function (e) {
+            classReference.uploadModal.fileContent = classReference.csvToJson(fileReader.result);
+            classReference.uploadModal.uplaodableFile = true;
+        }
     }
 
+    private csvToJson(csv:string):string{
+        var lines=csv.split("\n");
+        var result:any = [];
+        var headers=lines[0].split(",");
+        for(var i=1;i<lines.length;i++){
+            var obj:any = {};
+            var currentline=lines[i].split(",");
+            for(var j=0;j<headers.length;j++){
+                obj[headers[j]] = currentline[j];
+            }
+            result.push(obj);
+        }
+        return JSON.stringify(result);
+    }
 }
