@@ -47,6 +47,6 @@ export class LoadMapService{
         LoadMapService.MAX_VALUE = _.minBy(features,function (feature:any) {
             return feature.properties.data;
         }).properties.data;
-        return LoadMapService.MAX_VALUE/LoadMapService.COLOR_ARRAY.length;
+        return Math.floor(LoadMapService.MAX_VALUE/LoadMapService.COLOR_ARRAY.length);
     }
 }
