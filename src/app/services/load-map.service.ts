@@ -9,7 +9,7 @@ export class LoadMapService{
     public static MAX_VALUE:number = 0;
 
     static getColor(data:number) {
-        return LoadMapService.COLOR_ARRAY[Math.floor(data/LoadMapService.RANGE)];
+        return LoadMapService.COLOR_ARRAY[Math.floor(data/LoadMapService.RANGE) - 1];
     }
 
     style(feature:any):any{
@@ -44,9 +44,10 @@ export class LoadMapService{
 
     private findRange(data:any) : number {
         var features = data.features;
-        LoadMapService.MAX_VALUE = _.minBy(features,function (feature:any) {
-            return feature.properties.data;
-        }).properties.data;
+        _.forEach(features,function (feature:any) {
+            var bool = parseInt(feature.properties.data) > LoadMapService.MAX_VALUE;
+            LoadMapService.MAX_VALUE = bool ? feature.properties.data : LoadMapService.MAX_VALUE;
+        });
         return Math.floor(LoadMapService.MAX_VALUE/LoadMapService.COLOR_ARRAY.length);
     }
 }
