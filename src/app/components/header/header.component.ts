@@ -21,7 +21,6 @@ export class HeaderComponent {
 	}
 
 	goToHome(){
-		// window.location.href = '';
-		this.router.navigateByUrl('/');
+		window.location.href = '';
 	}
 }
