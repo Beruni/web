@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --inline --progress --port 8080 --host 0.0.0.0",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "karma start",
-    "build": "echo 'Running build....' && npm install && rimraf dist && build:prod",
+    "build": "echo 'Running build....' && npm install && rimraf dist && npm run build:prod",
     "postinstall": "rimraf typings && typings install",
     "e2e": "protractor",
     "pree2e": "webdriver-manager update",
