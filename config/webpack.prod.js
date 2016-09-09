@@ -25,7 +25,7 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('[name].[hash].css'),
     new webpack.DefinePlugin({
-        'beruni.config': {
+        'process.env': {
             'FB_APP_ID': FB_APP_IDS[process.env.NODE_ENV]
         }
     }), 

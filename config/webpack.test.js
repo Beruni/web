@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-        'beruni.config': {
+        'process.env': {
           'FB_APP_ID': 'foobar'
         }
     })

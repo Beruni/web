@@ -17,7 +17,7 @@ module.exports = webpackMerge(commonConfig, {
     plugins: [
         new ExtractTextPlugin('[name].css'),
         new webpack.DefinePlugin({
-            'beruni.config': {
+            'process.env': {
                 'FB_APP_ID': '509842172559092'
             }
         })
