@@ -3,12 +3,7 @@ var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
-
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const DISCOVERY_SERVICE_HOST = process.env.DISCOVERY_SERVICE_HOST || 'boot2docker.local';
-const DISCOVERY_SERVICE_PORT = process.env.DISCOVERY_SERVICE_PORT || '8500';
-const DISCOVERY_SERVICE_PATH = process.env.DISCOVERY_SERVICE_PATH || '/v1/catalog/service/node';
-
+var FB_APP_IDS = {'staging': '511286572414652', 'production': '486249311585045'};
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
 
@@ -29,12 +24,9 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin('[name].[hash].css'),
     new webpack.DefinePlugin({
-      'process.env': {
-        'ENV': JSON.stringify(ENV),
-        'DISCOVERY_SERVICE_HOST': JSON.stringify('//' + DISCOVERY_SERVICE_HOST),
-        'DISCOVERY_SERVICE_PORT': JSON.stringify(DISCOVERY_SERVICE_PORT),
-        'DISCOVERY_SERVICE_PATH': JSON.stringify(DISCOVERY_SERVICE_PATH)
-      }
-    })
+        'beruni.config': {
+            'FB_APP_ID': FB_APP_ID[process.env.NODE_ENV]
+        }
+    }), 
   ]
 });

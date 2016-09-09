@@ -20,7 +20,7 @@ export class FacebookLoginService {
 
     fbAsyncInit() {
         FB.init({
-            appId: '509842172559092',
+            appId: beruni.config.FB_APP_ID,
             cookie: true,  // enable cookies to allow the server to access
             // the session
             xfbml: true,  // parse social plugins on this page

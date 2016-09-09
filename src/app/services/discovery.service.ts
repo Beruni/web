@@ -33,7 +33,7 @@ export class NodeDiscoveryService {
   }
 
   getNodeServerUrl() {
-    return process.env.DISCOVERY_SERVICE_HOST + ':' + process.env.DISCOVERY_SERVICE_PORT + process.env.DISCOVERY_SERVICE_PATH;
+    return '//' + process.env.DISCOVERY_SERVICE_HOST + ':' + process.env.DISCOVERY_SERVICE_PORT + process.env.DISCOVERY_SERVICE_PATH;
   }
 
   clearDiscoveryDataCache() {

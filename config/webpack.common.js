@@ -53,6 +53,17 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+        new webpack.DefinePlugin({
+            'beruni.config': {
+                'FB_APP_ID': '509842172559092'
+            }
+        }),
+        new webpack.EnvironmentPlugin([
+            'NODE_ENV', 
+            'DISCOVERY_SERVICE_HOST', 
+            'DISCOVERY_SERVICE_PORT', 
+            'DISCOVERY_SERVICE_PATH'
+        ])
     ]
 };

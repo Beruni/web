@@ -5,7 +5,7 @@ import { AppComponent } from './app/app.component';
 import { appRouterProviders } from './app/app.routes';
 import { NodeDiscoveryService } from "./app/services/discovery.service";
 
-if (process.env.ENV === 'production') {
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
   enableProdMode();
 }
 
