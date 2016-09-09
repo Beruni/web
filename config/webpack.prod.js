@@ -5,7 +5,7 @@ var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const DISCOVERY_SERVICE_HOST = process.env.DISCOVERY_SERVICE_HOST || '//boot2docker.local';
+const DISCOVERY_SERVICE_HOST = process.env.DISCOVERY_SERVICE_HOST || 'boot2docker.local';
 const DISCOVERY_SERVICE_PORT = process.env.DISCOVERY_SERVICE_PORT || '8500';
 const DISCOVERY_SERVICE_PATH = process.env.DISCOVERY_SERVICE_PATH || '/v1/catalog/service/node';
 
@@ -31,7 +31,7 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         'ENV': JSON.stringify(ENV),
-        'DISCOVERY_SERVICE_HOST': JSON.stringify(DISCOVERY_SERVICE_HOST),
+        'DISCOVERY_SERVICE_HOST': JSON.stringify('//' + DISCOVERY_SERVICE_HOST),
         'DISCOVERY_SERVICE_PORT': JSON.stringify(DISCOVERY_SERVICE_PORT),
         'DISCOVERY_SERVICE_PATH': JSON.stringify(DISCOVERY_SERVICE_PATH)
       }
