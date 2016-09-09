@@ -2,4 +2,4 @@
 
 npm install
 npm run build
-cp staging.json dist/assets/staging.json
+cp ${NODE_ENV}.json dist/assets/${NODE_ENV}.json
