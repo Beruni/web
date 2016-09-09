@@ -18,12 +18,12 @@ build_app_staging:
     - deploy/compile_app.sh
     - deploy/build_docker_image.sh
   variables:
-    NODE_ENV: staging
-    DISCOVERY_SERVICE_HOST: staging-beruni.herokuapp.com
-    DISCOVERY_SERVICE_PORT: 80
-    DISCOVERY_SERVICE_PATH: /assets/staging.json 
+    NODE_ENV: "staging"
+    DISCOVERY_SERVICE_HOST: "staging-beruni.herokuapp.com"
+    DISCOVERY_SERVICE_PORT: "80"
+    DISCOVERY_SERVICE_PATH: "/assets/staging.json"
     CUSTOM_ENVIRONMENT: "staging-"
-    
+
 deploy_staging:
   stage: deploy
   script:
