@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   devtool: 'inline-source-map',
 
@@ -33,5 +35,12 @@ module.exports = {
         loader: 'null'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+        'beruni.config': {
+          'FB_APP_ID': 'foobar'
+        }
+    })
+  ]
 }
