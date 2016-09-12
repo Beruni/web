@@ -1,0 +1,44 @@
+[
+  {
+    "Node": "default",
+    "Address": "boundary-beruni.herokuapp.com",
+    "ServiceID": "default:boundary_file_service:80",
+    "ServiceName": "node",
+    "ServiceTags": [
+
+    ],
+    "ServiceAddress": "boundary-beruni.herokuapp.com",
+    "ServicePort": 80,
+    "ServiceEnableTagOverride": false,
+    "CreateIndex": 6,
+    "ModifyIndex": 6
+  },
+  {
+    "Node": "default",
+    "Address": "data-beruni.herokuapp.com",
+    "ServiceID": "default:data_service:80",
+    "ServiceName": "node",
+    "ServiceTags": [
+
+    ],
+    "ServiceAddress": "data-beruni.herokuapp.com",
+    "ServicePort": 80,
+    "ServiceEnableTagOverride": false,
+    "CreateIndex": 8,
+    "ModifyIndex": 8
+  },
+  {
+    "Node": "default",
+    "Address": "user-beruni.herokuapp.com",
+    "ServiceID": "default:user_service:80",
+    "ServiceName": "node",
+    "ServiceTags": [
+
+    ],
+    "ServiceAddress": "user-beruni.herokuapp.com",
+    "ServicePort": 80,
+    "ServiceEnableTagOverride": false,
+    "CreateIndex": 5,
+    "ModifyIndex": 5
+  }
+]

@@ -6,6 +6,7 @@ stages:
   - test
   - build
   - deploy
+  - release
 
 unit_test:
   stage: test
@@ -30,3 +31,21 @@ deploy_staging:
     - deploy/push_to_heroku.sh
   variables:
     CUSTOM_ENVIRONMENT: "staging-"
+
+build_app:
+  stage: release
+  script:
+    - deploy/compile_app.sh
+    - deploy/build_docker_image.sh
+  variables:
+    NODE_ENV: "production"
+    DISCOVERY_SERVICE_HOST: "beruni.herokuapp.com"
+    DISCOVERY_SERVICE_PORT: "80"
+    DISCOVERY_SERVICE_PATH: "/assets/production.json"
+
+deploy_staging:
+  stage: release
+  script:
+    - deploy/push_to_heroku.sh
+
+
