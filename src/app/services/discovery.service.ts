@@ -33,11 +33,7 @@ export class NodeDiscoveryService {
   }
 
   getNodeServerUrl() {
-    var url ='//' + process.env.DISCOVERY_SERVICE_HOST;
-    if(process.env.DISCOVERY_SERVICE_PORT) {
-      url += (':' + process.env.DISCOVERY_SERVICE_PORT);
-    } 
-    return url + process.env.DISCOVERY_SERVICE_PATH;
+    return this.getServiceUrl(process.env.DISCOVERY_SERVICE_HOST, process.env.DISCOVERY_SERVICE_PORT, process.env.DISCOVERY_SERVICE_PATH);
   }
 
   clearDiscoveryDataCache() {
@@ -48,5 +44,13 @@ export class NodeDiscoveryService {
     return this.discoveryDataCache.find(function(entry: any) {
       return entry['ServiceID'].match(serviceName);
     });
+  }
+
+  getServiceUrl(host: string, port: string, path: string) {
+    var url ='//' + host;
+    if(port) {
+      url += (':' + port);
+    } 
+    return url + path;
   }
 }

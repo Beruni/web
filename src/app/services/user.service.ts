@@ -8,8 +8,8 @@ export class UserService {
     private baseUrl: string
     
     constructor(private http: Http, private nodeDiscoveryService:NodeDiscoveryService) { 
-      let serviceParams = nodeDiscoveryService.serviceParams('user_service')
-      this.baseUrl = '//' + serviceParams['ServiceAddress'] + ':' + serviceParams['ServicePort'];
+      let serviceParams = nodeDiscoveryService.serviceParams('user_service');
+      this.baseUrl = nodeDiscoveryService.getServiceUrl(serviceParams['ServiceAddress'], serviceParams['ServicePort'], '');
     }
 
     login(data:any): Promise<any> {

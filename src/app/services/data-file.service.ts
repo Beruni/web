@@ -14,8 +14,8 @@ export class DataFileService implements UploadService {
 
     constructor(private http:Http, private localStorageService:LocalStorageService, private nodeDiscoveryService:NodeDiscoveryService) {
         this.token = this.localStorageService.getUserToken();
-        let serviceParams = nodeDiscoveryService.serviceParams('data_service')
-        this.baseUrl = '//' + serviceParams['ServiceAddress'] + ':' + serviceParams['ServicePort'];
+        let serviceParams = nodeDiscoveryService.serviceParams('data_service');
+        this.baseUrl = nodeDiscoveryService.getServiceUrl(serviceParams['ServiceAddress'], serviceParams['ServicePort'], '');
     }
 
     upload(dataFile:UploadableFile, callback:Function):any {
