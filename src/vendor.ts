@@ -15,3 +15,5 @@ import 'jquery';
 import 'semantic-ui-css/semantic.min.js';
 
 import 'ng-semantic';
+// Leaflet
+import 'leaflet/dist/leaflet.css';

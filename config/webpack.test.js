@@ -18,7 +18,7 @@ module.exports = {
         loader: 'raw!jade-html'
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         loader: 'null'
 
       },
