@@ -9,17 +9,17 @@ export class NodeDiscoveryService {
     this.discoveryDataCache = [{
       'ServiceID': 'user_service',
       'ServiceAddress': 'localhost',
-      'ServicePort': '3001'
+      'ServicePort': 3001
     },
     {
       'ServiceID': 'boundary_file_service',
       'ServiceAddress': 'localhost',
-      'ServicePort': '3000'
+      'ServicePort': 3000
     },
     {
       'ServiceID': 'data_service',
       'ServiceAddress': 'localhost',
-      'ServicePort': '3002'
+      'ServicePort': 3002
     }];
   }
 
@@ -46,9 +46,9 @@ export class NodeDiscoveryService {
     });
   }
 
-  getServiceUrl(host: string, port: string, path: string) {
+  getServiceUrl(host: string, port: number, path: string) {
     var url ='//' + host;
-    if(port) {
+    if(port && port != 80) {
       url += (':' + port);
     } 
     return url + path;
