@@ -6,7 +6,7 @@ stages:
   - test
   - build
   - deploy
-  # - release # enable this if you intend to release to prod
+  - release # enable this if you intend to release to prod
 
 unit_test:
   stage: test
@@ -21,7 +21,6 @@ build_app_staging:
   variables:
     NODE_ENV: "staging"
     DISCOVERY_SERVICE_HOST: "staging-beruni.herokuapp.com"
-    DISCOVERY_SERVICE_PORT: "80"
     DISCOVERY_SERVICE_PATH: "/assets/staging.json"
     CUSTOM_ENVIRONMENT: "staging-"
 
@@ -32,21 +31,20 @@ deploy_staging:
   variables:
     CUSTOM_ENVIRONMENT: "staging-"
 
-# build_app:
-#   stage: release
-#   script:
-#     - deploy/compile_app.sh
-#     - deploy/build_docker_image.sh
-#   variables:
-#     NODE_ENV: "production"
-#     DISCOVERY_SERVICE_HOST: "beruni.herokuapp.com"
-#     DISCOVERY_SERVICE_PORT: "80"
-#     DISCOVERY_SERVICE_PATH: "/assets/production.json"
+build_app:
+  stage: release
+  script:
+    - deploy/compile_app.sh
+    - deploy/build_docker_image.sh
+  variables:
+    NODE_ENV: "production"
+    DISCOVERY_SERVICE_HOST: "beruni.herokuapp.com"
+    DISCOVERY_SERVICE_PATH: "/assets/production.json"
 
-# deploy_production:
-#   stage: release
-#   environment: production
-#   script:
-#     - deploy/push_to_heroku.sh
+deploy_production:
+  stage: release
+  environment: production
+  script:
+    - deploy/push_to_heroku.sh
 
 
